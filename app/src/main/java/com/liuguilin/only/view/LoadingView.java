@@ -6,6 +6,7 @@ import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -96,6 +97,7 @@ public class LoadingView extends FrameLayout {
 
         mIndicationIm = (ImageView) view.findViewById(R.id.indication);
         mLoadTextView = (TextView) view.findViewById(R.id.promptTV);
+        mLoadTextView.setTextColor(Color.WHITE);
 
         if (mTextAppearance != -1) {
             mLoadTextView.setTextAppearance(getContext(), mTextAppearance);

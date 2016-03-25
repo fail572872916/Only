@@ -1,7 +1,11 @@
 package com.liuguilin.only;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+
 
 /**
  * 引导
@@ -9,9 +13,27 @@ import android.os.Bundle;
  */
 public class GuideActivity extends Activity{
 
+    private static final int TIMEOUT = 1;
+
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            switch (msg.what){
+                case TIMEOUT:
+                    startActivity(new Intent(GuideActivity.this,MainActivity.class));
+                    finish();
+                    break;
+            }
+        }
+    };
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guide);
+
+        handler.sendEmptyMessageDelayed(TIMEOUT,3000);
     }
 }
