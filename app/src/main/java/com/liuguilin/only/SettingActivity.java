@@ -13,5 +13,14 @@ public class SettingActivity extends BaseActivity{
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
         setContentView(R.layout.activity_setting);
+
+        initView();
+    }
+
+    /**
+     * 初始化控件
+     */
+    private void initView() {
+
     }
 }

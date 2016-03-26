@@ -10,6 +10,7 @@
    >
 
     <com.liuguilin.only.view.CircleImageView
+        android:id="@+id/iv_circle"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/liuguilin"
@@ -25,6 +26,11 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:focusableInTouchMode="true"
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -14,16 +14,17 @@ import android.view.MenuItem;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener {
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     private Toolbar toolbar;
-    private  FloatingActionButton fab;
+    private FloatingActionButton fab;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toolbar  = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         initView();
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -95,7 +97,8 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
-
+            //跳转设置
+            startActivity(new Intent(this, SettingActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -105,11 +108,12 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.fab:
                 //跳转地图页
-                startActivity(new Intent(this,MapActivity.class));
+                startActivity(new Intent(this, MapActivity.class));
                 break;
         }
     }
+
 }
