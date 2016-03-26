@@ -22,7 +22,7 @@ public class GuideActivity extends Activity{
 
             switch (msg.what){
                 case TIMEOUT:
-                    startActivity(new Intent(GuideActivity.this,MainActivity.class));
+                    startActivity(new Intent(GuideActivity.this,LocationActivity.class));
                     finish();
                     break;
             }
