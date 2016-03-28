@@ -11,8 +11,6 @@
 ##2015/03/24
 >第一次提交，新建一个项目！
 
-http://img.my.csdn.net/uploads/201603/28/1459170553_4715.png
-
 ##2015/03/25
 >重新调整架构
 >引导页使用开源：https://github.com/zzz40500/android-shapeLoadingView
@@ -22,7 +20,9 @@ http://img.my.csdn.net/uploads/201603/28/1459170553_4715.png
 
 >新增定位，城市选择，仿美团，开源地址：https://github.com/zaaach/CityPicker
 
-http://img.my.csdn.net/uploads/201603/28/1459170552_2207.png
+![这里写图片描述](http://img.my.csdn.net/uploads/201603/28/1459170552_2207.png)
 
 ##2015/03/28
 >新增沉浸式状态栏
+
+![这里写图片描述](http://img.my.csdn.net/uploads/201603/28/1459170553_4715.png)
