@@ -20,9 +20,7 @@
 
 >新增定位，城市选择，仿美团，开源地址：https://github.com/zaaach/CityPicker
 
-![这里写图片描述](http://img.my.csdn.net/uploads/201603/28/1459170552_2207.png)
 
 ##2015/03/28
 >新增沉浸式状态栏
 
-![这里写图片描述](http://img.my.csdn.net/uploads/201603/28/1459170553_4715.png)
