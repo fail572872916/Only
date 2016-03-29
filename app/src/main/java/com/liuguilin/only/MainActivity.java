@@ -12,7 +12,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -20,9 +19,6 @@ public class MainActivity extends AppCompatActivity
     public static final String KEY_PICKED_CITY = "picked_city";
     private Toolbar toolbar;
     private FloatingActionButton fab;
-
-    private TextView tv_city;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +34,6 @@ public class MainActivity extends AppCompatActivity
      * 初始化控件
      */
     private void initView() {
-
-        tv_city = (TextView) findViewById(R.id.tv_city);
-
-        Intent intent = getIntent();
-        tv_city.setText(intent.getStringExtra(KEY_PICKED_CITY));
-
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(this);
