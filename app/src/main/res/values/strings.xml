@@ -31,5 +31,9 @@
     <string name="locating">正在定位…</string>
     <string name="located_failed">定位失败</string>
 
+    <string name="tv_more">更多精彩</string>
+    <string name="tv_road">路况</string>
+    <string name="tv_navigation">导航</string>
+    <string name="tv_surrounding">周边</string>
 
 </resources>

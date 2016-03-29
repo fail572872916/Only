@@ -97,23 +97,27 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_toutiao) {
+            //跳转头条新闻
+            startActivity(new Intent(this, TouTiaoActivity.class));
+        } else if (id == R.id.nav_wechat) {
+            //跳转微信精选
+            startActivity(new Intent(this, WechatActivity.class));
+        } else if (id == R.id.nav_blog) {
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
+        } else if (id == R.id.nav_more) {
+            //跳转更多精彩
+            startActivity(new Intent(this, MoreActivity.class));
         } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_setting) {
             //跳转设置
             startActivity(new Intent(this, SettingActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        //关闭侧滑动画
+//        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
