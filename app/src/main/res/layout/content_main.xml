@@ -9,18 +9,13 @@
     tools:context="com.liuguilin.only.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <RelativeLayout
-        android:background="@color/colorPrimary"
-        android:layout_weight="1"
+    <LinearLayout
+        android:id="@+id/myContent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
+    </LinearLayout>
 
-    </RelativeLayout>
-
-    <Button
-        android:layout_weight="2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
 </LinearLayout>

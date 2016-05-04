@@ -1,6 +1,7 @@
 package com.liuguilin.only;
 
-import android.content.Intent;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -12,6 +13,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.liuguilin.only.fragment.BlogFragment;
+import com.liuguilin.only.fragment.MoreFragment;
+import com.liuguilin.only.fragment.NewsFragment;
+import com.liuguilin.only.fragment.WechatFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -34,6 +40,9 @@ public class MainActivity extends AppCompatActivity
      * 初始化控件
      */
     private void initView() {
+
+        //跳转头条新闻
+        initPagerContent(new NewsFragment());
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(this);
@@ -89,25 +98,25 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_toutiao) {
             //跳转头条新闻
-            startActivity(new Intent(this, TouTiaoActivity.class));
+            initPagerContent(new NewsFragment());
         } else if (id == R.id.nav_wechat) {
             //跳转微信精选
-            startActivity(new Intent(this, WechatActivity.class));
+            initPagerContent(new WechatFragment());
         } else if (id == R.id.nav_blog) {
-
+            //跳转我的博客
+            initPagerContent(new BlogFragment());
         } else if (id == R.id.nav_more) {
             //跳转更多精彩
-            startActivity(new Intent(this, MoreActivity.class));
+            initPagerContent(new MoreFragment());
         } else if (id == R.id.nav_share) {
-
+            //跳转分享
         } else if (id == R.id.nav_setting) {
             //跳转设置
-            startActivity(new Intent(this, SettingActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         //关闭侧滑动画
-//        drawer.closeDrawer(GravityCompat.START);
+        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
@@ -116,9 +125,21 @@ public class MainActivity extends AppCompatActivity
         switch (v.getId()) {
             case R.id.fab:
                 //跳转地图页
-                startActivity(new Intent(this, MapActivity.class));
                 break;
         }
+    }
+
+    /**
+     * 加载fragment
+     *
+     * @param fragment
+     */
+    private void initPagerContent(android.app.Fragment fragment) {
+        FragmentManager manager = getFragmentManager();
+        //会话
+        FragmentTransaction ft = manager.beginTransaction();
+        ft.replace(R.id.myContent, fragment);
+        ft.commit();
     }
 
 }

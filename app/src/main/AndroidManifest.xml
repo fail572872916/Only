@@ -41,33 +41,11 @@
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"></activity>
         <!--网页-->
         <activity android:name=".WebViewActivity"></activity>
-        <!--地图-->
-        <activity
-            android:name=".MapActivity"
-            android:label="@string/tv_map"></activity>
-        <!--设置-->
-        <activity
-            android:name=".SettingActivity"
-            android:label="@string/action_settings"></activity>
-        <!--定位-->
+
         <activity
             android:name=".LocationActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <!--更多精彩-->
-        <activity android:name=".MoreActivity"
-            android:label="@string/tv_more"></activity>
 
-        <!--周边-->
-        <activity android:name=".SurroundingActivity"
-            android:label="@string/tv_surrounding"></activity>
-
-        <!--今日头条-->
-        <activity android:name=".TouTiaoActivity"
-            android:label="@string/toutiao_news"></activity>
-
-        <!--微信精选-->
-        <activity android:name=".WechatActivity"
-            android:label="@string/wechat_select"></activity>
     </application>
 
 </manifest>

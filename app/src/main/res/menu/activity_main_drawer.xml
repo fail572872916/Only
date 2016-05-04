@@ -3,6 +3,7 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:checked="true"
             android:id="@+id/nav_toutiao"
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/toutiao_news" />
