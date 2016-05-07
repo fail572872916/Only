@@ -3,7 +3,6 @@ package com.liuguilin.only;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -14,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.liuguilin.only.fragment.BlogFragment;
 import com.liuguilin.only.fragment.MoreFragment;
 import com.liuguilin.only.fragment.NewsFragment;
@@ -43,9 +43,6 @@ public class MainActivity extends AppCompatActivity
 
         //跳转头条新闻
         initPagerContent(new NewsFragment());
-
-        fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(this);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -123,9 +120,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.fab:
-                //跳转地图页
-                break;
+
         }
     }
 

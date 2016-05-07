@@ -33,4 +33,10 @@
 ##2015/05/03
 >更改架构，用Fragment替换(考虑V4)
 
-![这里写图片描述](http://img.my.csdn.net/uploads/201605/04/1462366963_6070.gif)
+![这里写图片描述](http://img.my.csdn.net/uploads/201605/07/1462585813_8208.gif)
+
+
+##2015/05/07
+>新增悬浮按钮动画，使用开源：https://github.com/futuresimple/android-floating-action-button
+
+![这里写图片描述](http://img.my.csdn.net/uploads/201605/07/1462585934_2444.png)
