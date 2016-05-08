@@ -2,6 +2,7 @@ package com.liuguilin.only;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.liuguilin.only.fragment.BlogFragment;
@@ -22,9 +24,16 @@ import com.liuguilin.only.fragment.WechatFragment;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
+    //城市标记
     public static final String KEY_PICKED_CITY = "picked_city";
+    //ToolsBar
     private Toolbar toolbar;
+    //FloatingActionButton
     private FloatingActionButton fab;
+    //HeaderView
+    private View headerView;
+    //侧滑菜单
+    private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +43,14 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         initView();
+        initPOP();
+    }
+
+    /**
+     * 初始化PopWindows
+     */
+    private void initPOP() {
+
     }
 
     /**
@@ -52,6 +69,11 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //头部
+        headerView = navigationView.getHeaderView(0);
+        headerView.findViewById(R.id.iv_circle).setOnClickListener(this);
+        headerView.findViewById(R.id.tv_github).setOnClickListener(this);
 
     }
 
@@ -81,7 +103,7 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Toast.makeText(this,"PopWindows",Toast.LENGTH_SHORT).show();
         }
 
         return super.onOptionsItemSelected(item);
@@ -107,11 +129,13 @@ public class MainActivity extends AppCompatActivity
             initPagerContent(new MoreFragment());
         } else if (id == R.id.nav_share) {
             //跳转分享
+            startActivity(new Intent(this, ShareActivity.class));
         } else if (id == R.id.nav_setting) {
             //跳转设置
+            startActivity(new Intent(this, SettingActivity.class));
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         //关闭侧滑动画
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -120,6 +144,17 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            //跳转到我的信息
+            case R.id.iv_circle:
+                startActivity(new Intent(this, UserActivity.class));
+                break;
+            //跳转到我的Github
+            case R.id.tv_github:
+                //关闭侧滑动画
+                drawer.closeDrawer(GravityCompat.START);
+
+                startActivity(new Intent(this, GithubActivity.class));
+                break;
 
         }
     }

@@ -10,6 +10,7 @@
     >
 
     <com.liuguilin.only.view.CircleImageView
+        android:layout_marginTop="10dp"
         android:id="@+id/iv_circle"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -19,10 +20,11 @@
         android:layout_gravity="center_horizontal" />
 
     <TextView
+        android:layout_marginTop="16dp"
+        android:id="@+id/tv_name"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="@string/tv_my_name"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
@@ -32,7 +34,7 @@
         android:focusable="true"
         android:marqueeRepeatLimit="marquee_forever"
         android:focusableInTouchMode="true"
-        android:id="@+id/textView"
+        android:id="@+id/tv_github"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tv_my_github" />

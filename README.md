@@ -40,3 +40,15 @@
 >新增悬浮按钮动画，使用开源：https://github.com/futuresimple/android-floating-action-button
 
 ![这里写图片描述](http://img.my.csdn.net/uploads/201605/07/1462585934_2444.png)
+
+
+##2015/05/08
+>新增粒子爆炸效果
+>新增窗口菜单按钮
+>新增分享页面
+>新增我的信息页面
+>新增设置页面
+>新增Github页面
+
+![这里写图片描述](http://img.my.csdn.net/uploads/201605/08/1462719033_8795.gif)
+
