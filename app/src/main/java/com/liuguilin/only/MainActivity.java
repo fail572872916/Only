@@ -17,8 +17,11 @@ import android.widget.Toast;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.liuguilin.only.fragment.BlogFragment;
+import com.liuguilin.only.fragment.GithubFragment;
 import com.liuguilin.only.fragment.MoreFragment;
 import com.liuguilin.only.fragment.NewsFragment;
+import com.liuguilin.only.fragment.ShareFragment;
+import com.liuguilin.only.fragment.UserFragment;
 import com.liuguilin.only.fragment.WechatFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -129,7 +132,7 @@ public class MainActivity extends AppCompatActivity
             initPagerContent(new MoreFragment());
         } else if (id == R.id.nav_share) {
             //跳转分享
-            startActivity(new Intent(this, ShareActivity.class));
+            initPagerContent(new ShareFragment());
         } else if (id == R.id.nav_setting) {
             //跳转设置
             startActivity(new Intent(this, SettingActivity.class));
@@ -146,17 +149,19 @@ public class MainActivity extends AppCompatActivity
         switch (v.getId()) {
             //跳转到我的信息
             case R.id.iv_circle:
-                startActivity(new Intent(this, UserActivity.class));
+                initPagerContent(new UserFragment());
+                //关闭侧滑动画
+                drawer.closeDrawer(GravityCompat.START);
                 break;
             //跳转到我的Github
             case R.id.tv_github:
+                initPagerContent(new GithubFragment());
                 //关闭侧滑动画
                 drawer.closeDrawer(GravityCompat.START);
 
-                startActivity(new Intent(this, GithubActivity.class));
                 break;
-
         }
+
     }
 
     /**

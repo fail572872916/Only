@@ -7,18 +7,18 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <!--下段代码就是去除阴影的-->
-        <item name="android:windowContentOverlay">@null</item>
-    </style>
+    <!-- <item name="android:windowContentOverlay">@null</item>-->
+ </style>
 
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
+ <style name="AppTheme.NoActionBar">
+     <item name="windowActionBar">false</item>
+     <item name="windowNoTitle">true</item>
+ </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+ <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-    <!--自定义提示框-->
+ <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+ <!--自定义提示框-->
     <style name="pop_anim_style">
         <item name="android:windowEnterAnimation">@anim/pop_in</item>
         <item name="android:windowExitAnimation">@anim/pop_out</item>

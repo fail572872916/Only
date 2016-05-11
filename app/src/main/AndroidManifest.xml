@@ -50,14 +50,6 @@
         <activity android:name=".SettingActivity"
             android:label="@string/action_settings"></activity>
         <!-- 我的信息 -->
-        <activity android:name=".UserActivity"
-            android:label="@string/my_user"></activity>
-        <!-- 我的Github -->
-        <activity android:name=".GithubActivity"
-            android:label="@string/my_github"></activity>
-        <!-- 分享 -->
-        <activity android:name=".ShareActivity"
-            android:label="@string/tv_share"></activity>
 
     </application>
 

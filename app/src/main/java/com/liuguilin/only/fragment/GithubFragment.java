@@ -1,12 +1,17 @@
-package com.liuguilin.only;
+package com.liuguilin.only.fragment;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.liuguilin.only.R;
 import com.liuguilin.only.adapter.GithubAdapter;
 import com.liuguilin.only.bean.GithubBean;
 import com.liuguilin.only.view.ExplosionField;
@@ -15,10 +20,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Github
- * Created by LGL on 2016/5/8.
+ * 我的Github
+ * Created by LGL on 2016/5/11.
  */
-public class GithubActivity extends BaseActivity {
+public class GithubFragment extends Fragment{
+
 
     //列表
     private ListView mListView;
@@ -32,35 +38,35 @@ public class GithubActivity extends BaseActivity {
     //实体类
     private GithubBean bean;
     //装载数据
-    private List<GithubBean>mList = new ArrayList<GithubBean>();
+    private List<GithubBean> mList = new ArrayList<GithubBean>();
     // 实例化粒子动画
     private ExplosionField explosionField;
 
+    @Nullable
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_github);
-
-        initView();
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_github,null);
+        findView(view);
+        return view;
     }
 
     /**
-     * 初始化View
+     * 初始化
+     * @param view
      */
-    private void initView() {
-
-        explosionField = new ExplosionField(this);
+    private void findView(View view) {
+        explosionField = new ExplosionField(getActivity());
         // 绑定哪个控件哪个控件就有效果，如果需要整个layout，只要绑定根布局的id即可
-        explosionField.addListener(findViewById(R.id.iv_circle));
+        explosionField.addListener(view.findViewById(R.id.iv_circle));
 
-        mListView = (ListView) findViewById(R.id.mListView);
+        mListView = (ListView) view.findViewById(R.id.mListView);
         for (int i = 0; i < name_data.length ; i ++){
             bean = new GithubBean();
             bean.setName(name_data[i]);
             bean.setWebAddress(web_data[i]);
             mList.add(bean);
         }
-        adapter = new GithubAdapter(this,mList);
+        adapter = new GithubAdapter(getActivity(),mList);
         mListView.setAdapter(adapter);
 
         //点击事件
@@ -72,5 +78,6 @@ public class GithubActivity extends BaseActivity {
                 startActivity(intent);
             }
         });
+
     }
 }
