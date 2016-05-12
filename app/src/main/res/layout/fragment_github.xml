@@ -33,14 +33,16 @@
         android:layout_marginTop="5dp"
         android:layout_weight="1" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:alpha="0.5"
-        android:gravity="center"
-        android:text="刘某人程序员/Github"
-        android:textColor="#9000"
-        android:textSize="12dp" />
+
+       <TextView
+           android:layout_alignParentBottom="true"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginBottom="5dp"
+           android:alpha="0.5"
+           android:gravity="center"
+           android:text="刘某人程序员/Github"
+           android:textColor="#9000"
+           android:textSize="12dp" />
 
 </LinearLayout>

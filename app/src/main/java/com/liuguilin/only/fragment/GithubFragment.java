@@ -56,6 +56,7 @@ public class GithubFragment extends Fragment {
      * @param view
      */
     private void findView(View view) {
+
         explosionField = new ExplosionField(getActivity());
         // 绑定哪个控件哪个控件就有效果，如果需要整个layout，只要绑定根布局的id即可
         explosionField.addListener(view.findViewById(R.id.iv_circle));
@@ -74,12 +75,7 @@ public class GithubFragment extends Fragment {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Uri uri = Uri.parse(web_data[position]);
-//                Intent intent = new Intent(Intent.ACTION_VIEW,uri);
-//                startActivity(intent);
                 Intent intent = new Intent(getActivity(), WebViewActivity.class);
-                intent.putExtra("url", web_data[position]);
-                intent.putExtra("title",name_data[position]);
                 startActivity(intent);
             }
         });

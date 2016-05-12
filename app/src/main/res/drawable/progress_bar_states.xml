@@ -3,7 +3,7 @@
     <item android:id="@android:id/background">  
         <shape>  
             <gradient  
-                    android:startColor="#303F9F"
+                    android:startColor="#e91e63"
                     android:centerColor="#ffa600"  
                     android:endColor="#3F51B5"
             />

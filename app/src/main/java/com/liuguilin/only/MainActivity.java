@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +23,7 @@ import com.liuguilin.only.fragment.MoreFragment;
 import com.liuguilin.only.fragment.NewsFragment;
 import com.liuguilin.only.fragment.UserFragment;
 import com.liuguilin.only.fragment.WechatFragment;
+import com.liuguilin.only.view.CustomDialog;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -36,6 +38,8 @@ public class MainActivity extends AppCompatActivity
     private View headerView;
     //侧滑菜单
     private DrawerLayout drawer;
+    //分享Dialog
+    private CustomDialog dialog_share;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,7 +136,7 @@ public class MainActivity extends AppCompatActivity
             initPagerContent(new MoreFragment());
         } else if (id == R.id.nav_share) {
             //跳转分享
-            Toast.makeText(this,"分享",Toast.LENGTH_SHORT).show();
+            showShareDialog();
         } else if (id == R.id.nav_setting) {
             //跳转设置
             startActivity(new Intent(this, SettingActivity.class));
@@ -140,6 +144,14 @@ public class MainActivity extends AppCompatActivity
         //关闭侧滑动画
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    /**
+     * 分享Dialog
+     */
+    private void showShareDialog() {
+        dialog_share = new CustomDialog(this,0,0,R.layout.dialog_share,R.style.Theme_dialog, Gravity.BOTTOM,R.style.pop_anim_style);
+        dialog_share.show();
     }
 
     @Override
