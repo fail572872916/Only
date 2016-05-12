@@ -2,7 +2,6 @@ package com.liuguilin.only.fragment;
 
 import android.app.Fragment;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -12,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.liuguilin.only.R;
+import com.liuguilin.only.WebViewActivity;
 import com.liuguilin.only.adapter.GithubAdapter;
 import com.liuguilin.only.bean.GithubBean;
 import com.liuguilin.only.view.ExplosionField;
@@ -23,7 +23,7 @@ import java.util.List;
  * 我的Github
  * Created by LGL on 2016/5/11.
  */
-public class GithubFragment extends Fragment{
+public class GithubFragment extends Fragment {
 
 
     //列表
@@ -45,13 +45,14 @@ public class GithubFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_github,null);
+        View view = inflater.inflate(R.layout.fragment_github, null);
         findView(view);
         return view;
     }
 
     /**
      * 初始化
+     *
      * @param view
      */
     private void findView(View view) {
@@ -60,24 +61,27 @@ public class GithubFragment extends Fragment{
         explosionField.addListener(view.findViewById(R.id.iv_circle));
 
         mListView = (ListView) view.findViewById(R.id.mListView);
-        for (int i = 0; i < name_data.length ; i ++){
+        for (int i = 0; i < name_data.length; i++) {
             bean = new GithubBean();
             bean.setName(name_data[i]);
             bean.setWebAddress(web_data[i]);
             mList.add(bean);
         }
-        adapter = new GithubAdapter(getActivity(),mList);
+        adapter = new GithubAdapter(getActivity(), mList);
         mListView.setAdapter(adapter);
 
         //点击事件
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Uri uri = Uri.parse(web_data[position]);
-                Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+//                Uri uri = Uri.parse(web_data[position]);
+//                Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+//                startActivity(intent);
+                Intent intent = new Intent(getActivity(), WebViewActivity.class);
+                intent.putExtra("url", web_data[position]);
+                intent.putExtra("title",name_data[position]);
                 startActivity(intent);
             }
         });
-
     }
 }

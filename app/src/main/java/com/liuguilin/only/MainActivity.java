@@ -20,7 +20,6 @@ import com.liuguilin.only.fragment.BlogFragment;
 import com.liuguilin.only.fragment.GithubFragment;
 import com.liuguilin.only.fragment.MoreFragment;
 import com.liuguilin.only.fragment.NewsFragment;
-import com.liuguilin.only.fragment.ShareFragment;
 import com.liuguilin.only.fragment.UserFragment;
 import com.liuguilin.only.fragment.WechatFragment;
 
@@ -64,11 +63,12 @@ public class MainActivity extends AppCompatActivity
         //跳转头条新闻
         initPagerContent(new NewsFragment());
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -132,13 +132,11 @@ public class MainActivity extends AppCompatActivity
             initPagerContent(new MoreFragment());
         } else if (id == R.id.nav_share) {
             //跳转分享
-            initPagerContent(new ShareFragment());
+            Toast.makeText(this,"分享",Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_setting) {
             //跳转设置
             startActivity(new Intent(this, SettingActivity.class));
         }
-
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         //关闭侧滑动画
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -155,10 +153,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             //跳转到我的Github
             case R.id.tv_github:
-                initPagerContent(new GithubFragment());
                 //关闭侧滑动画
                 drawer.closeDrawer(GravityCompat.START);
-
+                initPagerContent(new GithubFragment());
                 break;
         }
 
