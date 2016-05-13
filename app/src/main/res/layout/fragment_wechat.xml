@@ -4,9 +4,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:text="微信精选"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <com.liuguilin.only.widget.WaveSwipeRefreshLayout
+        android:id="@+id/main_swipe"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/main_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.liuguilin.only.widget.WaveSwipeRefreshLayout>
 
 </LinearLayout>
