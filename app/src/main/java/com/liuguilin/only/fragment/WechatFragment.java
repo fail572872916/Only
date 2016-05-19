@@ -2,7 +2,6 @@ package com.liuguilin.only.fragment;
 
 import android.app.Fragment;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -21,7 +20,7 @@ import com.liuguilin.only.R;
 import com.liuguilin.only.WebViewActivity;
 import com.liuguilin.only.adapter.WechatAdapter;
 import com.liuguilin.only.bean.WechatBean;
-import com.liuguilin.only.widget.WaveSwipeRefreshLayout;
+import com.liuguilin.only.pull.PullToRefreshViews;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,8 +35,11 @@ import java.util.List;
  */
 public class WechatFragment extends Fragment {
 
-    //水滴刷新
-    private WaveSwipeRefreshLayout mWaveSwipeRefreshLayout;
+    //刷新
+    private PullToRefreshViews mPullToRefreshView;
+
+    //刷新时间
+    public static final int REFRESH_DELAY = 4000;
 
     private ListView mListView;
 
@@ -64,45 +66,32 @@ public class WechatFragment extends Fragment {
      */
     private void findView(View view) {
 
-        mListView = (ListView) view.findViewById(R.id.main_list);
+        mListView = (ListView) view.findViewById(R.id.list_view);
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                Intent i = new Intent(getActivity(),WebViewActivity.class);
+                Intent i = new Intent(getActivity(), WebViewActivity.class);
                 i.putExtra("title", titleList.get(position));
                 i.putExtra("url", urlList.get(position));
                 startActivity(i);
             }
         });
 
-        mWaveSwipeRefreshLayout = (WaveSwipeRefreshLayout) view.findViewById(R.id.main_swipe);
-        mWaveSwipeRefreshLayout.setOnRefreshListener(new WaveSwipeRefreshLayout.OnRefreshListener() {
+        mPullToRefreshView = (PullToRefreshViews) view.findViewById(R.id.pull_to_refresh);
+        mPullToRefreshView.setOnRefreshListener(new PullToRefreshViews.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                // Do work to refresh the list here.
-                new Task().execute();
+                mPullToRefreshView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mPullToRefreshView.setRefreshing(false);
+                    }
+                }, REFRESH_DELAY);
             }
         });
-
-        getNews();
-    }
-
-    private class Task extends AsyncTask<Void, Void, String[]> {
-
-        @Override
-        protected String[] doInBackground(Void... params) {
-            return new String[0];
-        }
-
-        @Override
-        protected void onPostExecute(String[] result) {
-            // Call setRefreshing(false) when the list has been refreshed.
-            mWaveSwipeRefreshLayout.setRefreshing(false);
-            super.onPostExecute(result);
-        }
     }
 
     private void getNews() {
