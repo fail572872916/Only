@@ -68,6 +68,8 @@ public class WechatFragment extends Fragment {
 
         mListView = (ListView) view.findViewById(R.id.list_view);
 
+        getNews();
+
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -79,6 +81,8 @@ public class WechatFragment extends Fragment {
                 startActivity(i);
             }
         });
+
+
 
         mPullToRefreshView = (PullToRefreshViews) view.findViewById(R.id.pull_to_refresh);
         mPullToRefreshView.setOnRefreshListener(new PullToRefreshViews.OnRefreshListener() {
@@ -92,6 +96,7 @@ public class WechatFragment extends Fragment {
                 }, REFRESH_DELAY);
             }
         });
+
     }
 
     private void getNews() {

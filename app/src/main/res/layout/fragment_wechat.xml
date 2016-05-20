@@ -7,9 +7,10 @@
     <com.liuguilin.only.pull.PullToRefreshViews
         android:id="@+id/pull_to_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <ListView
+            android:fadingEdge="none"
             android:id="@+id/list_view"
             android:divider="@null"
             android:dividerHeight="0dp"

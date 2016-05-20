@@ -1,6 +1,7 @@
 package com.liuguilin.only;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -9,6 +10,8 @@ import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
+
+import com.liuguilin.only.utils.L;
 
 /**
  * 页面跳转网页
@@ -28,6 +31,12 @@ public class WebViewActivity extends BaseActivity {
     }
 
     private void initView() {
+
+        Intent i = getIntent();
+        String title = i.getStringExtra("title");
+        String url = i.getStringExtra("url");
+
+        L.i("-------------------------------------"+title + ":"+url);
 
         pb = (ProgressBar) findViewById(R.id.pb);
         pb.setMax(100);

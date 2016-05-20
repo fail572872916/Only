@@ -4,9 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:text="更多精彩"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <GridView
+        android:numColumns="3"
+        android:id="@+id/mGridView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
