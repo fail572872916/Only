@@ -31,4 +31,8 @@ dependencies {
     compile 'com.getbase:floatingactionbutton:1.10.1'
     compile 'org.greenrobot:eventbus:3.0.0'
     compile files('libs/volley.jar')
+    compile 'com.nightonke:wowoviewpager:1.0.2'
+    compile files('libs/BaiduLBS_Android.jar')
+    compile files('libs/httpmime-4.1.2.jar')
+    compile files('libs/IndoorscapeAlbumPlugin.jar')
 }

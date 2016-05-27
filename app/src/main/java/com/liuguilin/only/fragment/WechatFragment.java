@@ -20,7 +20,6 @@ import com.liuguilin.only.R;
 import com.liuguilin.only.WebViewActivity;
 import com.liuguilin.only.adapter.WechatAdapter;
 import com.liuguilin.only.bean.WechatBean;
-import com.liuguilin.only.pull.PullToRefreshViews;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,9 +33,6 @@ import java.util.List;
  * Created by LGL on 2016/5/4.
  */
 public class WechatFragment extends Fragment {
-
-    //刷新
-    private PullToRefreshViews mPullToRefreshView;
 
     //刷新时间
     public static final int REFRESH_DELAY = 4000;
@@ -81,22 +77,6 @@ public class WechatFragment extends Fragment {
                 startActivity(i);
             }
         });
-
-
-
-        mPullToRefreshView = (PullToRefreshViews) view.findViewById(R.id.pull_to_refresh);
-        mPullToRefreshView.setOnRefreshListener(new PullToRefreshViews.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                mPullToRefreshView.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mPullToRefreshView.setRefreshing(false);
-                    }
-                }, REFRESH_DELAY);
-            }
-        });
-
     }
 
     private void getNews() {

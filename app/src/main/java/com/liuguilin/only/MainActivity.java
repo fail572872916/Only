@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity
     private DrawerLayout drawer;
     //分享Dialog
     private CustomDialog dialog_share;
+    //附近的人
+    private FloatingActionButton action_a,action_b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +84,8 @@ public class MainActivity extends AppCompatActivity
         headerView.findViewById(R.id.iv_circle).setOnClickListener(this);
         headerView.findViewById(R.id.tv_github).setOnClickListener(this);
 
+        action_b = (FloatingActionButton) findViewById(R.id.action_b);
+        action_b.setOnClickListener(this);
     }
 
     @Override
@@ -168,6 +172,10 @@ public class MainActivity extends AppCompatActivity
                 //关闭侧滑动画
                 drawer.closeDrawer(GravityCompat.START);
                 initPagerContent(new GithubFragment());
+                break;
+            //附近的人
+            case R.id.action_b:
+                startActivity(new Intent(this,MapActivity.class));
                 break;
         }
 
