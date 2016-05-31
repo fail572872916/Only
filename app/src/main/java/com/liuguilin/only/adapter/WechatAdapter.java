@@ -24,6 +24,7 @@ public class WechatAdapter extends BaseAdapter {
 	private List<WechatBean> mList;
 
 	private NetworkImageView networkImageView;
+
 	private RequestQueue mQueue;
 
 	private WechatBean bean;

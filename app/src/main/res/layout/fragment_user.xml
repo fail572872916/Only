@@ -16,9 +16,10 @@
         app:border_color="@color/colorAccent"
         app:border_width="2dp" />
 
-    <TextView
-        android:text="姓名"
+    <ListView
+        android:id="@+id/mListView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
 </LinearLayout>
