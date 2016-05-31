@@ -2,7 +2,6 @@ package com.liuguilin.only;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
 import com.baidu.mapapi.map.MapView;
 
@@ -10,13 +9,13 @@ import com.baidu.mapapi.map.MapView;
  * 附近的人
  * Created by LGL on 2016/5/27.
  */
-public class MapActivity extends AppCompatActivity {
+public class MapActivity extends BaseActivity {
 
     //地图
     private MapView mMapView = null;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 

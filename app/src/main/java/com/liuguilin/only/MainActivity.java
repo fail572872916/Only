@@ -9,12 +9,13 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.PopupWindow;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.liuguilin.only.fragment.BlogFragment;
@@ -42,6 +43,8 @@ public class MainActivity extends AppCompatActivity
     private CustomDialog dialog_share;
     //附近的人
     private FloatingActionButton action_a,action_b;
+    //窗口
+    private PopupWindow pop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,16 +54,8 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         initView();
-        initPOP();
-    }
-
-    /**
-     * 初始化PopWindows
-     */
-    private void initPOP() {
 
     }
-
     /**
      * 初始化控件
      */
@@ -111,12 +106,27 @@ public class MainActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Toast.makeText(this,"PopWindows",Toast.LENGTH_SHORT).show();
+            //加载视图
+            View view = getLayoutInflater().inflate(R.layout.pop_layout,null);
+            //实例化
+            pop = new PopupWindow(view, 200,LinearLayoutCompat.LayoutParams.WRAP_CONTENT,true);
+            pop.setOutsideTouchable(true);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    pop.dismiss();
+                }
+            });
+            //类似switch功能
+            if(pop.isShowing()){
+                pop.dismiss();
+            }else{
+                //显示
+                pop.showAsDropDown(findViewById(R.id.action_settings));
+            }
         }
-
         return super.onOptionsItemSelected(item);
     }
 

@@ -40,7 +40,7 @@ public class WebViewActivity extends BaseActivity {
 
         pb = (ProgressBar) findViewById(R.id.pb);
         pb.setMax(100);
-         webView = (WebView) findViewById(R.id.webview);
+        webView = (WebView) findViewById(R.id.webview);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setSupportZoom(true);
         webView.getSettings().setBuiltInZoomControls(true);

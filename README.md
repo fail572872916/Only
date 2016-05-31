@@ -1,6 +1,12 @@
 ##2016/05/31
 >更换下拉刷新，地址：https://github.com/Yalantis/Phoenix
+
 >新增CredView显示新闻
+
+>新增标题菜单
+
+>支持X86平台
+
 
 
 ##2016/05/27
