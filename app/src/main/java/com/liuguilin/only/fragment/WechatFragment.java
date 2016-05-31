@@ -20,6 +20,7 @@ import com.liuguilin.only.R;
 import com.liuguilin.only.WebViewActivity;
 import com.liuguilin.only.adapter.WechatAdapter;
 import com.liuguilin.only.bean.WechatBean;
+import com.yalantis.phoenix.PullToRefreshView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,6 +47,9 @@ public class WechatFragment extends Fragment {
     private List<String> urlList = new ArrayList<String>();
 
     private List<String> titleList = new ArrayList<String>();
+
+    //下拉刷新
+    private PullToRefreshView mPullToRefreshView;
 
     @Nullable
     @Override
@@ -75,6 +79,20 @@ public class WechatFragment extends Fragment {
                 i.putExtra("title", titleList.get(position));
                 i.putExtra("url", urlList.get(position));
                 startActivity(i);
+            }
+        });
+
+
+        mPullToRefreshView = (PullToRefreshView) view.findViewById(R.id.pull_to_refresh);
+        mPullToRefreshView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mPullToRefreshView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mPullToRefreshView.setRefreshing(false);
+                    }
+                }, REFRESH_DELAY);
             }
         });
     }

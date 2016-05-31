@@ -1,3 +1,7 @@
+##2016/05/31
+>更换下拉刷新，地址：https://github.com/Yalantis/Phoenix
+>新增CredView显示新闻
+
 
 ##2016/05/27
 >添加了百度地图
