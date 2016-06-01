@@ -1,7 +1,6 @@
 package com.liuguilin.only;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -32,9 +31,9 @@ public class WebViewActivity extends BaseActivity {
 
     private void initView() {
 
-        Intent i = getIntent();
-        String title = i.getStringExtra("title");
-        String url = i.getStringExtra("url");
+        Bundle bundle = getIntent().getExtras();
+        String title = bundle.getString("title");
+        String url = bundle.getString("url");
 
         L.i("-------------------------------------"+title + ":"+url);
 
@@ -45,7 +44,7 @@ public class WebViewActivity extends BaseActivity {
         webView.getSettings().setSupportZoom(true);
         webView.getSettings().setBuiltInZoomControls(true);
         webView.setWebChromeClient(new WebViewClient());
-        webView.loadUrl("https://github.com/LiuGuiLinAndroid/Only");
+        webView.loadUrl(url);
 
     }
 

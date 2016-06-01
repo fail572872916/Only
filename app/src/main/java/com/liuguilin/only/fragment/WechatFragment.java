@@ -76,8 +76,10 @@ public class WechatFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 Intent i = new Intent(getActivity(), WebViewActivity.class);
-                i.putExtra("title", titleList.get(position));
-                i.putExtra("url", urlList.get(position));
+                Bundle b = new Bundle();
+                b.putString("title", titleList.get(position));
+                b.putString("url", urlList.get(position));
+                i.putExtras(b);
                 startActivity(i);
             }
         });
@@ -151,6 +153,5 @@ public class WechatFragment extends Fragment {
             e.printStackTrace();
         }
     }
-
 
 }
