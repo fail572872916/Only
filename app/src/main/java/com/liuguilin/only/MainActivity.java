@@ -1,5 +1,8 @@
 package com.liuguilin.only;
 
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
+import android.annotation.SuppressLint;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
@@ -11,13 +14,17 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.BounceInterpolator;
+import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.Toast;
 
-import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.liuguilin.only.fragment.BlogFragment;
 import com.liuguilin.only.fragment.GithubFragment;
 import com.liuguilin.only.fragment.MoreFragment;
@@ -33,18 +40,23 @@ public class MainActivity extends AppCompatActivity
     public static final String KEY_PICKED_CITY = "picked_city";
     //ToolsBar
     private Toolbar toolbar;
-    //FloatingActionButton
-    private FloatingActionButton fab;
     //HeaderView
     private View headerView;
     //侧滑菜单
     private DrawerLayout drawer;
     //分享Dialog
-    private CustomDialog dialog_share;
-    //附近的人
-    private FloatingActionButton action_a,action_b;
+    private CustomDialog dialog_share, dialog_finish;
     //窗口
     private PopupWindow pop;
+    //退出标记
+    private long exitTime = 0;
+
+    private ImageView mIvIcon1;
+    private ImageView mIvIcon2;
+    private ImageView mIvIcon3;
+    private ImageView mIvIcon4;
+    private ImageView mIvIcon5;
+    private ImageView mIvIcon6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +68,7 @@ public class MainActivity extends AppCompatActivity
         initView();
 
     }
+
     /**
      * 初始化控件
      */
@@ -79,8 +92,23 @@ public class MainActivity extends AppCompatActivity
         headerView.findViewById(R.id.iv_circle).setOnClickListener(this);
         headerView.findViewById(R.id.tv_github).setOnClickListener(this);
 
-        action_b = (FloatingActionButton) findViewById(R.id.action_b);
-        action_b.setOnClickListener(this);
+
+        //初始化图片
+        mIvIcon1 = (ImageView) findViewById(R.id.iv_icon1);
+        mIvIcon2 = (ImageView) findViewById(R.id.iv_icon2);
+        mIvIcon3 = (ImageView) findViewById(R.id.iv_icon3);
+        mIvIcon4 = (ImageView) findViewById(R.id.iv_icon4);
+        mIvIcon5 = (ImageView) findViewById(R.id.iv_icon5);
+        mIvIcon6 = (ImageView) findViewById(R.id.iv_icon6);
+
+        mIvIcon1.setOnClickListener(this);
+        mIvIcon2.setOnClickListener(this);
+        mIvIcon3.setOnClickListener(this);
+        mIvIcon4.setOnClickListener(this);
+        mIvIcon5.setOnClickListener(this);
+        mIvIcon6.setOnClickListener(this);
+
+
     }
 
     @Override
@@ -109,9 +137,9 @@ public class MainActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             //加载视图
-            View view = getLayoutInflater().inflate(R.layout.pop_layout,null);
+            View view = getLayoutInflater().inflate(R.layout.pop_layout, null);
             //实例化
-            pop = new PopupWindow(view, 200,LinearLayoutCompat.LayoutParams.WRAP_CONTENT,true);
+            pop = new PopupWindow(view, 200, LinearLayoutCompat.LayoutParams.WRAP_CONTENT, true);
             pop.setOutsideTouchable(true);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -120,9 +148,9 @@ public class MainActivity extends AppCompatActivity
                 }
             });
             //类似switch功能
-            if(pop.isShowing()){
+            if (pop.isShowing()) {
                 pop.dismiss();
-            }else{
+            } else {
                 //显示
                 pop.showAsDropDown(findViewById(R.id.action_settings));
             }
@@ -164,7 +192,7 @@ public class MainActivity extends AppCompatActivity
      * 分享Dialog
      */
     private void showShareDialog() {
-        dialog_share = new CustomDialog(this,0,0,R.layout.dialog_share,R.style.Theme_dialog, Gravity.BOTTOM,R.style.pop_anim_style);
+        dialog_share = new CustomDialog(this, 0, 0, R.layout.dialog_share, R.style.Theme_dialog, Gravity.BOTTOM, R.style.pop_anim_style);
         dialog_share.show();
     }
 
@@ -183,12 +211,91 @@ public class MainActivity extends AppCompatActivity
                 drawer.closeDrawer(GravityCompat.START);
                 initPagerContent(new GithubFragment());
                 break;
-            //附近的人
-            case R.id.action_b:
-                startActivity(new Intent(this,MapActivity.class));
+            case R.id.iv_icon1:
+                Toast.makeText(this, "icon1", 0).show();
+                break;
+            case R.id.iv_icon2:
+                Toast.makeText(this, "icon2", 0).show();
+                break;
+            case R.id.iv_icon3:
+                Toast.makeText(this, "icon3", 0).show();
+                break;
+            case R.id.iv_icon4:
+                Toast.makeText(this, "icon4", 0).show();
+                break;
+            case R.id.iv_icon5:
+                Toast.makeText(this, "icon5", 0).show();
+                break;
+            case R.id.iv_icon6:
+                //点击最外层icon，展开icon动画
+                showIcon();
                 break;
         }
 
+    }
+
+    /**
+     * 动画实现，因为除了沿X,Y轴的图标，另外3个都有角度，所有，要有三角函数计算
+     * 使图标位移距离相等，实现扇形效果
+     */
+    @SuppressLint("NewApi")
+    private void showIcon() {
+
+        //设置动画时间
+        int duration = 500;
+        //动画距离,屏幕宽度的60%
+        float distance = getScreenWidth() * 0.6f;
+        //相邻ImageView运动角度式22.5度
+        float angle1 = (float) (22.5f * Math.PI / 180);
+        float angle2 = (float) (45f * Math.PI / 180);
+        float angle3 = (float) (67.5f * Math.PI / 180);
+
+        //icon1
+        PropertyValuesHolder p1 = PropertyValuesHolder.ofFloat("TranslationX", 0f, distance);
+        //icon2
+        PropertyValuesHolder p21 = PropertyValuesHolder.ofFloat("TranslationX", 0f, (float) (distance * Math.cos(angle1)));
+        PropertyValuesHolder p22 = PropertyValuesHolder.ofFloat("TranslationY", 0f, -(float) (distance * Math.sin(angle1)));
+        //icon3
+        PropertyValuesHolder p31 = PropertyValuesHolder.ofFloat("TranslationX", 0f, (float) (distance * Math.cos(angle2)));
+        PropertyValuesHolder p32 = PropertyValuesHolder.ofFloat("TranslationY", 0f, -(float) (distance * Math.sin(angle2)));
+        //icon4
+        PropertyValuesHolder p41 = PropertyValuesHolder.ofFloat("TranslationX", 0f, (float) (distance * Math.cos(angle3)));
+        PropertyValuesHolder p42 = PropertyValuesHolder.ofFloat("TranslationY", 0f, -(float) (distance * Math.sin(angle3)));
+        //icon5
+        PropertyValuesHolder p5 = PropertyValuesHolder.ofFloat("TranslationY", 0f, -distance);
+
+        ObjectAnimator animator1 = ObjectAnimator.ofPropertyValuesHolder(mIvIcon1, p1).setDuration(duration);
+        ObjectAnimator animator2 = ObjectAnimator.ofPropertyValuesHolder(mIvIcon2, p21, p22).setDuration(duration);
+        ObjectAnimator animator3 = ObjectAnimator.ofPropertyValuesHolder(mIvIcon3, p31, p32).setDuration(duration);
+        ObjectAnimator animator4 = ObjectAnimator.ofPropertyValuesHolder(mIvIcon4, p41, p42).setDuration(duration);
+        ObjectAnimator animator5 = ObjectAnimator.ofPropertyValuesHolder(mIvIcon5, p5).setDuration(duration);
+
+        //添加自由落体效果插值器
+        animator1.setInterpolator(new BounceInterpolator());
+        animator2.setInterpolator(new BounceInterpolator());
+        animator3.setInterpolator(new BounceInterpolator());
+        animator4.setInterpolator(new BounceInterpolator());
+        animator5.setInterpolator(new BounceInterpolator());
+
+        //启动动画
+        animator1.start();
+        animator2.start();
+        animator3.start();
+        animator4.start();
+        animator5.start();
+    }
+
+    /**
+     * 竖屏时获取屏幕宽度，横屏时，获取高度
+     *
+     * @return
+     */
+    public int getScreenWidth() {
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(outMetrics);
+        int x = outMetrics.widthPixels;
+        int y = outMetrics.heightPixels;
+        return x > y ? y : x;
     }
 
     /**
@@ -204,4 +311,34 @@ public class MainActivity extends AppCompatActivity
         ft.commit();
     }
 
+    /**
+     * 监听按钮
+     *
+     * @param event
+     * @return
+     */
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        //如果按退出
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+            if (event.getAction() == KeyEvent.ACTION_DOWN && event.getRepeatCount() == 0) {
+                exitAPP();
+            }
+            return true;
+        }
+        return super.dispatchKeyEvent(event);
+    }
+
+    /**
+     * 退出应用
+     */
+    private void exitAPP() {
+        if (System.currentTimeMillis() - exitTime > 2000) {
+            Toast.makeText(this, "再按一次退出Only", Toast.LENGTH_LONG).show();
+            exitTime = System.currentTimeMillis();
+        } else {
+            finish();
+        }
+
+    }
 }

@@ -4,13 +4,10 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
-
-import com.liuguilin.only.utils.L;
 
 /**
  * 页面跳转网页
@@ -19,11 +16,11 @@ import com.liuguilin.only.utils.L;
 public class WebViewActivity extends BaseActivity {
 
     private ProgressBar pb;
-    private WebView  webView;
+    private WebView webView;
 
     @Override
-    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_webview);
 
         initView();
@@ -32,10 +29,10 @@ public class WebViewActivity extends BaseActivity {
     private void initView() {
 
         Bundle bundle = getIntent().getExtras();
-        String title = bundle.getString("title");
+        final String title = bundle.getString("title");
         String url = bundle.getString("url");
 
-        L.i("-------------------------------------"+title + ":"+url);
+        getSupportActionBar().setTitle(title);
 
         pb = (ProgressBar) findViewById(R.id.pb);
         pb.setMax(100);
@@ -45,6 +42,17 @@ public class WebViewActivity extends BaseActivity {
         webView.getSettings().setBuiltInZoomControls(true);
         webView.setWebChromeClient(new WebViewClient());
         webView.loadUrl(url);
+
+        //本地显示
+        webView.setWebViewClient(new android.webkit.WebViewClient(){
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+
+                view.loadUrl(url);
+
+                return true;
+            }
+        });
 
     }
 

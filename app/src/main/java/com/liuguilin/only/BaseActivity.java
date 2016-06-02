@@ -19,13 +19,26 @@ public class BaseActivity extends AppCompatActivity {
 
         //ActionBar上显示返回
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         //以下代码用于去除阴影
         if (Build.VERSION.SDK_INT >= 21) {
             getSupportActionBar().setElevation(0);
         }
 
+        //Android4.4以後技巧透明(需反复测试)
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            //透明状态栏
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//            //透明导航栏
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//        }
     }
 
+    /**
+     * 菜单操作
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

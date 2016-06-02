@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:clipToPadding="true"
     tools:context="com.liuguilin.only.MainActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -25,42 +26,57 @@
 
     <include layout="@layout/content_main" />
 
+
    <RelativeLayout
+       android:paddingBottom="15dp"
+       android:paddingLeft="15dp"
        android:layout_width="match_parent"
        android:layout_height="match_parent">
 
-       <com.getbase.floatingactionbutton.FloatingActionsMenu
-           android:layout_marginBottom="16dp"
-           android:layout_marginRight="16dp"
-           android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-           android:id="@+id/multiple_actions"
+
+       <ImageView
+           android:id="@+id/iv_icon1"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           fab:fab_addButtonColorNormal="@color/white"
-           fab:fab_addButtonColorPressed="@color/white_pressed"
-           fab:fab_addButtonPlusIconColor="@color/half_black"
-           fab:fab_labelStyle="@style/menu_labels_style">
-
-           <com.getbase.floatingactionbutton.FloatingActionButton
-               android:id="@+id/action_a"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               fab:fab_colorNormal="@color/white"
-               fab:fab_colorPressed="@color/white_pressed"
-               fab:fab_title="探索" />
-
-           <com.getbase.floatingactionbutton.FloatingActionButton
-               android:id="@+id/action_b"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               fab:fab_colorNormal="@color/white"
-               fab:fab_colorPressed="@color/white_pressed"
-               fab:fab_title="附近" />
-
-       </com.getbase.floatingactionbutton.FloatingActionsMenu>
+           android:layout_alignParentLeft="true"
+           android:layout_alignParentBottom="true"
+           android:src="@drawable/a1" />
+       <ImageView
+           android:id="@+id/iv_icon2"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentLeft="true"
+           android:layout_alignParentBottom="true"
+           android:src="@drawable/a2" />
+       <ImageView
+           android:id="@+id/iv_icon3"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentLeft="true"
+           android:layout_alignParentBottom="true"
+           android:src="@drawable/a3" />
+       <ImageView
+           android:id="@+id/iv_icon4"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentLeft="true"
+           android:layout_alignParentBottom="true"
+           android:src="@drawable/a4" />
+       <ImageView
+           android:id="@+id/iv_icon5"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentLeft="true"
+           android:layout_alignParentBottom="true"
+           android:src="@drawable/a5" />
+       <ImageView
+           android:id="@+id/iv_icon6"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentLeft="true"
+           android:layout_alignParentBottom="true"
+           android:src="@drawable/stay" />
 
    </RelativeLayout>
-
 
 </android.support.design.widget.CoordinatorLayout>

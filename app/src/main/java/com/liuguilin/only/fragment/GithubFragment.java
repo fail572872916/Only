@@ -75,8 +75,12 @@ public class GithubFragment extends Fragment {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getActivity(), WebViewActivity.class);
-                startActivity(intent);
+                Intent i = new Intent(getActivity(), WebViewActivity.class);
+                Bundle b = new Bundle();
+                b.putString("title", name_data[position]);
+                b.putString("url", web_data[position]);
+                i.putExtras(b);
+                startActivity(i);
             }
         });
     }

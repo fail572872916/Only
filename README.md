@@ -1,3 +1,14 @@
+##2016/06/02
+>新增再按一次退出
+
+>新增网页浏览
+
+>新增分享页面
+
+>更换悬浮菜单，地址：http://blog.csdn.net/laxian2009/article/details/48699347
+>有bug，待修复
+
+
 ##2016/05/31
 >更换下拉刷新，地址：https://github.com/Yalantis/Phoenix
 
