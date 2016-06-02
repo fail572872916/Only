@@ -8,6 +8,10 @@
 >更换悬浮菜单，地址：http://blog.csdn.net/laxian2009/article/details/48699347
 >有bug，待修复
 
+>更新首页,使用知乎日报接口
+
+>新增Glide,解析图片
+
 
 ##2016/05/31
 >更换下拉刷新，地址：https://github.com/Yalantis/Phoenix
