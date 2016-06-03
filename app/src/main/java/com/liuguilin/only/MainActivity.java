@@ -108,7 +108,29 @@ public class MainActivity extends AppCompatActivity
         mIvIcon5.setOnClickListener(this);
         mIvIcon6.setOnClickListener(this);
 
+        showImage(false);
 
+    }
+
+    /**
+     * 是否显示菜单
+     *
+     * @param isShow
+     */
+    private void showImage(boolean isShow) {
+        if (isShow) {
+            mIvIcon1.setVisibility(View.VISIBLE);
+            mIvIcon2.setVisibility(View.VISIBLE);
+            mIvIcon3.setVisibility(View.VISIBLE);
+            mIvIcon4.setVisibility(View.VISIBLE);
+            mIvIcon5.setVisibility(View.VISIBLE);
+        } else {
+            mIvIcon1.setVisibility(View.GONE);
+            mIvIcon2.setVisibility(View.GONE);
+            mIvIcon3.setVisibility(View.GONE);
+            mIvIcon4.setVisibility(View.GONE);
+            mIvIcon5.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -227,8 +249,14 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(this, "icon5", 0).show();
                 break;
             case R.id.iv_icon6:
-                //点击最外层icon，展开icon动画
-                showIcon();
+                if (mIvIcon1.getVisibility() == View.GONE) {
+                    showImage(true);
+                    //点击最外层icon，展开icon动画
+                    showIcon();
+                } else {
+                    showImage(false);
+                }
+
                 break;
         }
 
@@ -284,6 +312,8 @@ public class MainActivity extends AppCompatActivity
         animator4.start();
         animator5.start();
     }
+
+
 
     /**
      * 竖屏时获取屏幕宽度，横屏时，获取高度
