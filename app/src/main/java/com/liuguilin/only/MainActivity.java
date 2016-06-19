@@ -26,6 +26,7 @@ import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import com.liuguilin.only.fragment.BlogFragment;
+import com.liuguilin.only.fragment.GirlFragment;
 import com.liuguilin.only.fragment.GithubFragment;
 import com.liuguilin.only.fragment.MoreFragment;
 import com.liuguilin.only.fragment.NewsFragment;
@@ -198,7 +199,10 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_more) {
             //跳转更多精彩
             initPagerContent(new MoreFragment());
-        } else if (id == R.id.nav_share) {
+        } else if(id == R.id.nav_girl){
+            //跳转福利
+            initPagerContent(new GirlFragment());
+        }else if (id == R.id.nav_share) {
             //跳转分享
             showShareDialog();
         } else if (id == R.id.nav_setting) {
