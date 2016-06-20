@@ -7,6 +7,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity
     private ImageView mIvIcon3;
     private ImageView mIvIcon4;
     private ImageView mIvIcon5;
-    private ImageView mIvIcon6;
+    private FloatingActionButton mIvIcon6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +101,7 @@ public class MainActivity extends AppCompatActivity
         mIvIcon3 = (ImageView) findViewById(R.id.iv_icon3);
         mIvIcon4 = (ImageView) findViewById(R.id.iv_icon4);
         mIvIcon5 = (ImageView) findViewById(R.id.iv_icon5);
-        mIvIcon6 = (ImageView) findViewById(R.id.iv_icon6);
+        mIvIcon6 = (FloatingActionButton) findViewById(R.id.iv_icon6);
 
         mIvIcon1.setOnClickListener(this);
         mIvIcon2.setOnClickListener(this);

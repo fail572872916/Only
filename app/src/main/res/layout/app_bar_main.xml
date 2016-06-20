@@ -40,42 +40,45 @@
            android:layout_height="wrap_content"
            android:layout_alignParentLeft="true"
            android:layout_alignParentBottom="true"
-           android:src="@drawable/a1" />
+           android:src="@drawable/fab_yes" />
        <ImageView
            android:id="@+id/iv_icon2"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_alignParentLeft="true"
            android:layout_alignParentBottom="true"
-           android:src="@drawable/a2" />
+           android:src="@drawable/fab_pay" />
        <ImageView
            android:id="@+id/iv_icon3"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_alignParentLeft="true"
            android:layout_alignParentBottom="true"
-           android:src="@drawable/a3" />
+           android:src="@drawable/fab_tab" />
        <ImageView
            android:id="@+id/iv_icon4"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_alignParentLeft="true"
            android:layout_alignParentBottom="true"
-           android:src="@drawable/a4" />
+           android:src="@drawable/fab_photo" />
        <ImageView
            android:id="@+id/iv_icon5"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_alignParentLeft="true"
            android:layout_alignParentBottom="true"
-           android:src="@drawable/a5" />
-       <ImageView
+           android:src="@drawable/fab_search" />
+
+
+       <android.support.design.widget.FloatingActionButton
+           android:background="#fff"
            android:id="@+id/iv_icon6"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_alignParentLeft="true"
            android:layout_alignParentBottom="true"
-           android:src="@drawable/stay" />
+           android:src="@drawable/action_add_avl" />
 
    </RelativeLayout>
 
