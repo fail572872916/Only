@@ -6,15 +6,19 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.liuguilin.only.R;
+import com.liuguilin.only.view.CircularMenuView;
 
 /**
  * 更多精彩
  * Created by LGL on 2016/5/4.
  */
-public class MoreFragment extends Fragment {
+public class MoreFragment extends Fragment implements CircularMenuView.OnRorateListenser {
 
+    //圆形菜单
+    private CircularMenuView mCircleMenu;
 
     @Nullable
     @Override
@@ -30,7 +34,18 @@ public class MoreFragment extends Fragment {
      * @param view
      */
     private void findView(View view) {
+        mCircleMenu = (CircularMenuView) view.findViewById(R.id.mCircleMenu);
+        mCircleMenu.setOnRorateListenser(this);
 
+    }
 
+    @Override
+    public void onCircleInnerLinstener(CircularMenuView.PointCirCleInner pointCirCle) {
+        Toast.makeText(getActivity(), "当前点击是:" + pointCirCle.cirCle_name, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onCircleOuterLinstener(CircularMenuView.PointCirCleOut pointCirCle) {
+        Toast.makeText(getActivity(), "当前点击是:" + pointCirCle.cirCle_name, Toast.LENGTH_SHORT).show();
     }
 }

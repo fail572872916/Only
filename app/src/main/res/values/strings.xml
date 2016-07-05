@@ -39,5 +39,28 @@
     <string name="tv_surrounding">周边</string>
 
 
+    <!--外圈12-->
+    <string name="item_1">话费直冲</string>
+    <string name="item_2">游戏直冲</string>
+    <string name="item_3">加油卡</string>
+    <string name="item_4">流量充值</string>
+    <string name="item_5">社保缴纳</string>
+    <string name="item_6">宽带续费</string>
+    <string name="item_7">苹果充值</string>
+    <string name="item_8">周工解梦</string>
+    <string name="item_9">归属地查询</string>
+    <string name="item_10">IP查询</string>
+    <string name="item_11">邮编查询</string>
+    <string name="item_12">快递查询</string>
+
+    <!--内圈6-->
+    <string name="item_13">测试吉凶</string>
+    <string name="item_14">身份证查询</string>
+    <string name="item_15">万年历</string>
+    <string name="item_16">微信精选</string>
+    <string name="item_17">笑话大全</string>
+    <string name="item_18">关于作者</string>
+
+
 
 </resources>
