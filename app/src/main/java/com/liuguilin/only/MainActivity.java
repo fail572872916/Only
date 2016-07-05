@@ -23,6 +23,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.BounceInterpolator;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
@@ -48,6 +49,8 @@ public class MainActivity extends AppCompatActivity
     private DrawerLayout drawer;
     //分享Dialog
     private CustomDialog dialog_share, dialog_finish;
+    private LinearLayout cancel_share,qq_firend_share,qq_qzone_share,wechat_share,wechatmoments_share,line_share,
+        img_share,erweima_share,other_share;
     //窗口
     private PopupWindow pop;
     //退出标记
@@ -221,6 +224,25 @@ public class MainActivity extends AppCompatActivity
     private void showShareDialog() {
         dialog_share = new CustomDialog(this, 0, 0, R.layout.dialog_share, R.style.Theme_dialog, Gravity.BOTTOM, R.style.pop_anim_style);
         dialog_share.show();
+        cancel_share= (LinearLayout) dialog_share.findViewById(R.id.cancel_share);//取消
+        cancel_share.setOnClickListener(MainActivity.this);
+        qq_firend_share = (LinearLayout) dialog_share.findViewById(R.id.qq_firend_share);//qq好友
+        qq_firend_share.setOnClickListener(MainActivity.this);
+        qq_qzone_share = (LinearLayout) dialog_share.findViewById(R.id.qq_qzone_share);//qq空间
+        qq_qzone_share.setOnClickListener(MainActivity.this);
+        wechat_share = (LinearLayout) dialog_share.findViewById(R.id.wechat_share);//微信
+        wechat_share.setOnClickListener(MainActivity.this);
+        wechatmoments_share = (LinearLayout) dialog_share.findViewById(R.id.wechatmoments_share);//微信朋友圈
+        wechatmoments_share.setOnClickListener(MainActivity.this);
+        line_share = (LinearLayout) dialog_share.findViewById(R.id.line_share);//复制链接
+        line_share.setOnClickListener(MainActivity.this);
+        img_share = (LinearLayout) dialog_share.findViewById(R.id.img_share);//图片分享
+        img_share.setOnClickListener(MainActivity.this);
+        erweima_share = (LinearLayout) dialog_share.findViewById(R.id.erweima_share);//分享二维码
+        erweima_share.setOnClickListener(MainActivity.this);
+        other_share = (LinearLayout) dialog_share.findViewById(R.id.other_share);//其他分享
+        other_share.setOnClickListener(MainActivity.this);
+
     }
 
     @Override
@@ -262,6 +284,33 @@ public class MainActivity extends AppCompatActivity
                     showImage(false);
                 }
 
+                break;
+            case R.id.cancel_share://取消分享
+                dialog_share.dismiss();
+                break;
+            case R.id.qq_firend_share://qq好友分享
+                Toast.makeText(getApplicationContext(),"qq好友分享",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.qq_qzone_share://qq空间分享
+                Toast.makeText(getApplicationContext(),"qq空间分享",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.wechat_share://微信分享
+                Toast.makeText(getApplicationContext(),"微信分享",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.wechatmoments_share://微信朋友圈分享
+                Toast.makeText(getApplicationContext(),"微信朋友圈分享",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.line_share://复制链接
+                Toast.makeText(getApplicationContext(),"复制链接",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.img_share://图片分享
+                Toast.makeText(getApplicationContext(),"图片分享",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.erweima_share://分享二维码
+                Toast.makeText(getApplicationContext(),"分享二维码",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.other_share://其他分享
+                Toast.makeText(getApplicationContext(),"其他分享",Toast.LENGTH_SHORT).show();
                 break;
         }
 
