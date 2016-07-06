@@ -5,6 +5,7 @@ import android.animation.PropertyValuesHolder;
 import android.annotation.SuppressLint;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -12,6 +13,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.Toolbar;
@@ -34,6 +36,7 @@ import com.liuguilin.only.fragment.MoreFragment;
 import com.liuguilin.only.fragment.NewsFragment;
 import com.liuguilin.only.fragment.UserFragment;
 import com.liuguilin.only.fragment.WechatFragment;
+import com.liuguilin.only.utils.NetWorkUtils;
 import com.liuguilin.only.view.CustomDialog;
 
 public class MainActivity extends AppCompatActivity
@@ -70,6 +73,7 @@ public class MainActivity extends AppCompatActivity
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        isNetWork();
         initView();
 
     }
@@ -423,5 +427,25 @@ public class MainActivity extends AppCompatActivity
             finish();
         }
 
+    }
+
+    /**
+     * 判断网络是够连接
+     */
+    private void isNetWork() {
+        if (!NetWorkUtils.isConnected(this)) {
+            new AlertDialog.Builder(this).setTitle(getString(R.string.network_connection_error))
+                    .setMessage(getString(R.string.is_go_netwotk_setting)).setPositiveButton(getString(R.string.intent_setting), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    NetWorkUtils.openSystemSetting(getApplicationContext());
+                }
+            }).setNegativeButton(getString(R.string.finish), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    System.exit(0);
+                }
+            }).show();
+        }
     }
 }
