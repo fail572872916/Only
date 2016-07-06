@@ -1,10 +1,12 @@
 package com.liuguilin.only.adapter;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
@@ -14,6 +16,8 @@ import com.android.volley.toolbox.Volley;
 import com.liuguilin.only.R;
 import com.liuguilin.only.bean.WechatBean;
 import com.liuguilin.only.cache.LruImageCache;
+import com.liuguilin.only.utils.L;
+import com.liuguilin.only.utils.PicassoUtils;
 
 import java.util.List;
 
@@ -61,7 +65,7 @@ public class WechatAdapter extends BaseAdapter {
 		if (convertView == null) {
 			vHoldwe = new ViewHoldwe();
 			convertView = inflater.inflate(R.layout.wechatist_item, null);
-			vHoldwe.iv_url = (NetworkImageView) convertView
+			vHoldwe.iv_url = (ImageView) convertView
 					.findViewById(R.id.iv_url);
 			vHoldwe.tv_title = (TextView) convertView
 					.findViewById(R.id.tv_title);
@@ -72,13 +76,13 @@ public class WechatAdapter extends BaseAdapter {
 		}
 
 		bean = mList.get(position);
-
-		mQueue = Volley.newRequestQueue(mContext);
-		LruImageCache lruImageCache = LruImageCache.instance();
-		ImageLoader imageLoader = new ImageLoader(mQueue, lruImageCache);
-		vHoldwe.iv_url.setDefaultImageResId(R.drawable.lod);
-		vHoldwe.iv_url.setErrorImageResId(R.drawable.iv_error);
-		vHoldwe.iv_url.setImageUrl(bean.getUrl(), imageLoader);
+		//使用Picasso解析
+		L.i("-----------"+bean.getUrl());
+		if(!TextUtils.isEmpty(bean.getUrl())){
+			PicassoUtils.loadImageViewSize(mContext,bean.getUrl(),180,100,vHoldwe.iv_url);
+		}else{
+			vHoldwe.iv_url.setBackgroundResource(R.drawable.iv_error);
+		}
 
 		vHoldwe.tv_title.setText(bean.getTitle());
 		vHoldwe.tv_type.setText(bean.getType());
@@ -87,7 +91,7 @@ public class WechatAdapter extends BaseAdapter {
 	}
 
 	class ViewHoldwe {
-		private NetworkImageView iv_url;
+		private ImageView iv_url;
 		private TextView tv_title;
 		private TextView tv_type;
 	}

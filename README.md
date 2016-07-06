@@ -1,3 +1,15 @@
+##2016/07/06
+>去除Glide,图片解析统一使用Picasso，封装Picasso工具类，Blog:http://blog.csdn.net/qq_26787115/article/details/51746953
+
+>重新设置微信精选，图片进行裁剪
+
+
+![这里写图片描述](http://img.my.csdn.net/uploads/201607/06/1467774803_6563.png)
+
+>对妹子图进行了优化和裁剪
+
+![这里写图片描述](http://img.my.csdn.net/uploads/201607/06/1467774955_4036.png)
+
 ##2016/07/05
 >新增更多精彩菜单自定义圆形MenuView，支持手势滑动转圈
 

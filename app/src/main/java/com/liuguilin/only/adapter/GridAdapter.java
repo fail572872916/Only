@@ -1,10 +1,13 @@
 package com.liuguilin.only.adapter;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
@@ -14,6 +17,8 @@ import com.android.volley.toolbox.Volley;
 import com.liuguilin.only.R;
 import com.liuguilin.only.bean.GirlBean;
 import com.liuguilin.only.cache.LruImageCache;
+import com.liuguilin.only.utils.L;
+import com.liuguilin.only.utils.PicassoUtils;
 
 import java.util.List;
 
@@ -26,9 +31,6 @@ public class GridAdapter extends BaseAdapter {
     private Context mContext;
     private LayoutInflater inflater;
     private List<GirlBean> mList;
-
-    private NetworkImageView networkImageView;
-
     private RequestQueue mQueue;
 
     private GirlBean bean;
@@ -64,7 +66,7 @@ public class GridAdapter extends BaseAdapter {
         if (convertView == null) {
             vHoldwe = new ViewHoldwe();
             convertView = inflater.inflate(R.layout.girl_item, null);
-            vHoldwe.iv_url = (NetworkImageView) convertView
+            vHoldwe.iv_url = (ImageView) convertView
                     .findViewById(R.id.iv_url);
             vHoldwe.tv_time = (TextView) convertView
                     .findViewById(R.id.tv_time);
@@ -74,21 +76,20 @@ public class GridAdapter extends BaseAdapter {
         }
 
         bean = mList.get(position);
-
-        mQueue = Volley.newRequestQueue(mContext);
-        LruImageCache lruImageCache = LruImageCache.instance();
-        ImageLoader imageLoader = new ImageLoader(mQueue, lruImageCache);
-        vHoldwe.iv_url.setDefaultImageResId(R.drawable.lod);
-        vHoldwe.iv_url.setErrorImageResId(R.drawable.iv_error);
-        vHoldwe.iv_url.setImageUrl(bean.getUrl(), imageLoader);
-
+        //使用Picasso解析
+        L.i("-----------" + bean.getUrl());
+        if (!TextUtils.isEmpty(bean.getUrl())) {
+            PicassoUtils.loadImageViewSize(mContext, bean.getUrl(), 500, 300, vHoldwe.iv_url);
+        } else {
+            vHoldwe.iv_url.setBackgroundResource(R.drawable.iv_error);
+        }
         vHoldwe.tv_time.setText(bean.getTime());
 
         return convertView;
     }
 
     class ViewHoldwe {
-        private NetworkImageView iv_url;
+        private ImageView iv_url;
         private TextView tv_time;
     }
 }
