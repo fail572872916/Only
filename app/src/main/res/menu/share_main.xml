@@ -3,10 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:icon="@drawable/action_add"
-        android:id="@+id/action_settings"
+        android:icon="@mipmap/share_menu"
+        android:id="@+id/action_share"
         android:orderInCategory="100"
         app:showAsAction="always"
         android:title=" " />
-
 </menu>

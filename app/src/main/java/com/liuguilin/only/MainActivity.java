@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity
     private DrawerLayout drawer;
     //分享Dialog
     private CustomDialog dialog_share, dialog_finish;
-    private LinearLayout cancel_share,qq_firend_share,qq_qzone_share,wechat_share,wechatmoments_share,line_share,
-        img_share,erweima_share,other_share;
+    private LinearLayout cancel_share, qq_firend_share, qq_qzone_share, wechat_share, wechatmoments_share, line_share,
+            img_share, erweima_share, other_share;
     //窗口
     private PopupWindow pop;
     //退出标记
@@ -203,10 +203,10 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_more) {
             //跳转更多精彩
             initPagerContent(new MoreFragment());
-        } else if(id == R.id.nav_girl){
+        } else if (id == R.id.nav_girl) {
             //跳转福利
             initPagerContent(new GirlFragment());
-        }else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_share) {
             //跳转分享
             showShareDialog();
         } else if (id == R.id.nav_setting) {
@@ -224,7 +224,7 @@ public class MainActivity extends AppCompatActivity
     private void showShareDialog() {
         dialog_share = new CustomDialog(this, 0, 0, R.layout.dialog_share, R.style.Theme_dialog, Gravity.BOTTOM, R.style.pop_anim_style);
         dialog_share.show();
-        cancel_share= (LinearLayout) dialog_share.findViewById(R.id.cancel_share);//取消
+        cancel_share = (LinearLayout) dialog_share.findViewById(R.id.cancel_share);//取消
         cancel_share.setOnClickListener(MainActivity.this);
         qq_firend_share = (LinearLayout) dialog_share.findViewById(R.id.qq_firend_share);//qq好友
         qq_firend_share.setOnClickListener(MainActivity.this);
@@ -273,7 +273,7 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(this, "icon4", 0).show();
                 break;
             case R.id.iv_icon5:
-                Toast.makeText(this, "icon5", 0).show();
+                startActivity(new Intent(this, SearchActivity.class));
                 break;
             case R.id.iv_icon6:
                 if (mIvIcon1.getVisibility() == View.GONE) {
@@ -289,28 +289,28 @@ public class MainActivity extends AppCompatActivity
                 dialog_share.dismiss();
                 break;
             case R.id.qq_firend_share://qq好友分享
-                Toast.makeText(getApplicationContext(),"qq好友分享",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "qq好友分享", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.qq_qzone_share://qq空间分享
-                Toast.makeText(getApplicationContext(),"qq空间分享",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "qq空间分享", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.wechat_share://微信分享
-                Toast.makeText(getApplicationContext(),"微信分享",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "微信分享", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.wechatmoments_share://微信朋友圈分享
-                Toast.makeText(getApplicationContext(),"微信朋友圈分享",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "微信朋友圈分享", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.line_share://复制链接
-                Toast.makeText(getApplicationContext(),"复制链接",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "复制链接", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.img_share://图片分享
-                Toast.makeText(getApplicationContext(),"图片分享",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "图片分享", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.erweima_share://分享二维码
-                Toast.makeText(getApplicationContext(),"分享二维码",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "分享二维码", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.other_share://其他分享
-                Toast.makeText(getApplicationContext(),"其他分享",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "其他分享", Toast.LENGTH_SHORT).show();
                 break;
         }
 
@@ -366,7 +366,6 @@ public class MainActivity extends AppCompatActivity
         animator4.start();
         animator5.start();
     }
-
 
 
     /**
