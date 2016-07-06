@@ -16,7 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.bumptech.glide.Glide;
+import com.liuguilin.only.utils.PicassoUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -72,8 +72,7 @@ public class IndexActivity extends Activity {
                         try {
                             JSONObject jsonObject = new JSONObject(json);
                             tv_content.setText(jsonObject.getString("text"));
-                            //使用Glide解析
-                            Glide.with(IndexActivity.this).load(jsonObject.getString("img")).into(iv_index);
+                            PicassoUtils.loadImageViewSize(IndexActivity.this,jsonObject.getString("img"),720,1280,iv_index);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
