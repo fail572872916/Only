@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity
             mWebsite.setOnClickListener(this);
             mDream.setOnClickListener(this);
             //实例化
-            pop = new PopupWindow(view, 200, LinearLayoutCompat.LayoutParams.WRAP_CONTENT, true);
+            pop = new PopupWindow(view, 300, LinearLayoutCompat.LayoutParams.WRAP_CONTENT, true);
             pop.setOutsideTouchable(true);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
