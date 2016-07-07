@@ -6,7 +6,7 @@
             android:id="@+id/nav_toutiao"
             android:checked="true"
             android:icon="@mipmap/item1"
-            android:title="@string/toutiao_news"/>
+            android:title="@string/new_music"/>
         <item
             android:id="@+id/nav_wechat"
             android:icon="@mipmap/item2"

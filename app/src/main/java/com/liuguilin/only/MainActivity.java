@@ -34,7 +34,7 @@ import com.liuguilin.only.fragment.BlogFragment;
 import com.liuguilin.only.fragment.GirlFragment;
 import com.liuguilin.only.fragment.GithubFragment;
 import com.liuguilin.only.fragment.MoreFragment;
-import com.liuguilin.only.fragment.NewsFragment;
+import com.liuguilin.only.fragment.MusicFragment;
 import com.liuguilin.only.fragment.UserFragment;
 import com.liuguilin.only.fragment.WechatFragment;
 import com.liuguilin.only.utils.NetWorkUtils;
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity
     private void initView() {
 
         //跳转头条新闻
-        initPagerContent(new NewsFragment());
+        initPagerContent(new MusicFragment());
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -215,7 +215,7 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_toutiao) {
             //跳转头条新闻
-            initPagerContent(new NewsFragment());
+            initPagerContent(new MusicFragment());
         } else if (id == R.id.nav_wechat) {
             //跳转微信精选
             initPagerContent(new WechatFragment());
