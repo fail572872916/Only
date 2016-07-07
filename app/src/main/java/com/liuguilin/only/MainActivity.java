@@ -27,6 +27,7 @@ import android.view.animation.BounceInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.liuguilin.only.fragment.BlogFragment;
@@ -65,6 +66,12 @@ public class MainActivity extends AppCompatActivity
     private ImageView mIvIcon4;
     private ImageView mIvIcon5;
     private FloatingActionButton mIvIcon6;
+
+    //popuwindow
+    private TextView mRadar;    //雷达
+    private TextView mScan;     //扫一扫
+    private TextView mWebsite;  //访问官网
+    private TextView mDream;    //关于梦
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,6 +126,8 @@ public class MainActivity extends AppCompatActivity
 
         showImage(false);
 
+
+
     }
 
     /**
@@ -169,6 +178,15 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             //加载视图
             View view = getLayoutInflater().inflate(R.layout.pop_layout, null);
+            mRadar = (TextView) view.findViewById(R.id.tv_leida);
+            mScan = (TextView) view.findViewById(R.id.tv_saomiao);
+            mWebsite = (TextView) view.findViewById(R.id.tv_guanwang);
+            mDream = (TextView) view.findViewById(R.id.tv_about);
+
+            mRadar.setOnClickListener(this);
+            mScan.setOnClickListener(this);
+            mWebsite.setOnClickListener(this);
+            mDream.setOnClickListener(this);
             //实例化
             pop = new PopupWindow(view, 200, LinearLayoutCompat.LayoutParams.WRAP_CONTENT, true);
             pop.setOutsideTouchable(true);
@@ -315,6 +333,18 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.other_share://其他分享
                 Toast.makeText(getApplicationContext(), "其他分享", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.tv_leida: //雷达
+                Toast.makeText(getApplicationContext(), "雷达", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.tv_saomiao:   //扫一扫
+                Toast.makeText(getApplicationContext(), "扫一扫", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.tv_guanwang:  //访问官网
+                Toast.makeText(getApplicationContext(), "访问官网", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.tv_about: //关于梦
+                Toast.makeText(getApplicationContext(), "关于梦", Toast.LENGTH_SHORT).show();
                 break;
         }
 
