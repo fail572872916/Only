@@ -95,6 +95,11 @@ public class GirlFragment extends Fragment {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+
+                        //全部清除
+                        mList.clear();
+                        urlList.clear();
+
                         count++;
                         if (count > 6) {
                             count = 0;
@@ -103,7 +108,7 @@ public class GirlFragment extends Fragment {
                         getGirl();
                         //刷新
                         adapter.notifyDataSetChanged();
-                        //关闭刷
+                        //关闭刷新
                         swipeRefreshLayout.setRefreshing(false);
                     }
                 },1000);
