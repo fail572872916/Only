@@ -3,6 +3,8 @@
 
 **版权声明：本项目为本人原创项目，未经本人允许不得用于商务传播，转载请注明出处。**
 
+##2016/07/12
+>集成腾讯Bugly,更好的捕捉异常Crash
 
 ##2016/07/06
 >去除Glide,图片解析统一使用Picasso，封装Picasso工具类，Blog:http://blog.csdn.net/qq_26787115/article/details/51746953
