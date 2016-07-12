@@ -6,6 +6,9 @@
 ##2016/07/12
 >集成腾讯Bugly,更好的捕捉异常Crash
 
+>去除腾讯bugly ndk部分
+>妹子福利新增刷新，暂时不是很完善
+
 ##2016/07/06
 >去除Glide,图片解析统一使用Picasso，封装Picasso工具类，Blog:http://blog.csdn.net/qq_26787115/article/details/51746953
 

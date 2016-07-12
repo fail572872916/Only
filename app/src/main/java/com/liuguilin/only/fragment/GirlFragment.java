@@ -3,6 +3,8 @@ package com.liuguilin.only.fragment;
 import android.app.Fragment;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,10 +40,6 @@ import java.util.List;
  */
 public class GirlFragment extends Fragment {
 
-
-    //Gank的接口
-    private String url = "http://gank.io/api/search/query/listview/category/福利/count/50/page/1 ";
-
     //列表
     private GridView mGridView;
 
@@ -54,6 +52,12 @@ public class GirlFragment extends Fragment {
 
     //提示框
     private CustomDialog imgDialog;
+
+    //页数
+    private int count = 1;
+
+    //下拉刷新
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     private ImageView iv_girl_pow;
 
@@ -70,10 +74,49 @@ public class GirlFragment extends Fragment {
      * @param view
      */
     private void findView(View view) {
+
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_container);
+
         mGridView = (GridView) view.findViewById(R.id.mGridView);
 
         imgDialog = new CustomDialog(getActivity(), LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, R.layout.dialog_girl, R.style.Theme_dialog, Gravity.CENTER, R.style.pop_anim_style);
         iv_girl_pow = (ImageView) imgDialog.findViewById(R.id.iv_girl_pow);
+
+        getGirl();
+
+        //设置下拉刷新的颜色
+        swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_light, android.R.color.holo_red_light, android.R.color.holo_orange_light, android.R.color.holo_green_light);
+        //下拉监听
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        count++;
+                        if (count > 6) {
+                            count = 0;
+                        }
+                        //重新请求
+                        getGirl();
+                        //刷新
+                        adapter.notifyDataSetChanged();
+                        //关闭刷
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                },1000);
+            }
+        });
+    }
+
+    /**
+     * 解析妹子
+     */
+    private void getGirl(){
+        //Gank的接口
+        String url = "http://gank.io/api/search/query/listview/category/福利/count/50/page/" + count;
 
         RequestQueue queue = Volley.newRequestQueue(getActivity());
         StringRequest request = new StringRequest(Request.Method.GET, url,
@@ -92,7 +135,6 @@ public class GirlFragment extends Fragment {
         });
 
         queue.add(request);
-
     }
 
     /**
