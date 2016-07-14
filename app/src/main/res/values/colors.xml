@@ -25,4 +25,9 @@
 
     <color name="sky_background">#228FC1</color>
 
+    <color name="setting_view">#DDDDDD</color>
+    <color name="setting_text">#E6836F</color>
+    <color name="setting_background">#FCFCFC</color>
+    <color name="setting_text2">#999999</color>
+
 </resources>
