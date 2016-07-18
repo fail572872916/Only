@@ -36,7 +36,8 @@ public class MusicFragment extends Fragment {
     //存放标题
     private List<String> mListTitle = new ArrayList<>();
     //轮播
-    private ViewPager view_pager;
+    private ViewPager vp_pager;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -52,7 +53,7 @@ public class MusicFragment extends Fragment {
      */
     private void findView(View view) {
 
-        view_pager = (ViewPager) view.findViewById(R.id.view_pager);
+        vp_pager = (ViewPager) view.findViewById(R.id.vp_pager);
 
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -68,6 +69,9 @@ public class MusicFragment extends Fragment {
             }
         });
     }
+
+
+
 
     /**
      * 解析json
