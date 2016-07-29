@@ -1,6 +1,5 @@
 package com.liuguilin.only.fragment;
 
-import android.app.Fragment;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
@@ -38,7 +37,7 @@ import java.util.List;
  * 福利
  * Created by LGL on 2016/5/4.
  */
-public class GirlFragment extends Fragment {
+public class GirlFragment extends android.support.v4.app.Fragment {
 
     //列表
     private GridView mGridView;

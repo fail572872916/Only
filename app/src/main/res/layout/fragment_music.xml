@@ -5,47 +5,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!--广告轮播图-->
-    <RelativeLayout
+    <com.liuguilin.only.view.OrientedViewPager
+        android:id="@+id/view_pager"
         android:layout_width="match_parent"
-        android:layout_height="160dp">
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/vp_pager"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <LinearLayout
-            android:layout_alignParentBottom="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:background="#a000"
-            android:orientation="vertical"
-            android:padding="5dp">
-
-            <TextView
-                android:id="@+id/tv_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="新闻标题"
-                android:textColor="#fff"
-                android:textSize="16sp"/>
-
-            <LinearLayout
-                android:id="@+id/ll_container"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:orientation="horizontal">
-            </LinearLayout>
-        </LinearLayout>
-    </RelativeLayout>
-
-    <!--歌曲列表-->
-    <ListView
-        android:id="@+id/musicList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:background="@color/blue_semi_transparent_pressed"/>
 
 </LinearLayout>

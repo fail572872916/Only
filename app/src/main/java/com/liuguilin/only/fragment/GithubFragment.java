@@ -1,6 +1,5 @@
 package com.liuguilin.only.fragment;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -23,7 +22,7 @@ import java.util.List;
  * 我的Github
  * Created by LGL on 2016/5/11.
  */
-public class GithubFragment extends Fragment {
+public class GithubFragment extends android.support.v4.app.Fragment {
 
 
     //列表

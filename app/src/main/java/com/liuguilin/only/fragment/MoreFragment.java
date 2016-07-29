@@ -1,6 +1,5 @@
 package com.liuguilin.only.fragment;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -15,7 +14,7 @@ import com.liuguilin.only.view.CircularMenuView;
  * 更多精彩
  * Created by LGL on 2016/5/4.
  */
-public class MoreFragment extends Fragment implements CircularMenuView.OnRorateListenser {
+public class MoreFragment extends android.support.v4.app.Fragment implements CircularMenuView.OnRorateListenser {
 
     //圆形菜单
     private CircularMenuView mCircleMenu;

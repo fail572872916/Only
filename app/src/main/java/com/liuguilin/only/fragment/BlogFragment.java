@@ -1,6 +1,5 @@
 package com.liuguilin.only.fragment;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,7 +28,7 @@ import java.util.List;
  * 我的博客
  * Created by LGL on 2016/5/4.
  */
-public class BlogFragment extends Fragment {
+public class BlogFragment extends android.support.v4.app.Fragment {
 
     private ListView mBlogListView;
     //adapter
@@ -44,6 +43,7 @@ public class BlogFragment extends Fragment {
     private SwipeRefreshLayout swipeRefreshLayout;
 
     public static final int HTMLGET = 10;
+    public static final int UPDATE_ADAPTER = 11;
 
     private Handler handler = new Handler() {
         @Override
@@ -63,12 +63,17 @@ public class BlogFragment extends Fragment {
                                     titleText.add(s.text());
                                     blogUrl.add(s.attr("href"));
                                 }
-
+                                handler.sendEmptyMessage(UPDATE_ADAPTER);
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
                         }
                     }).start();
+                    break;
+                case UPDATE_ADAPTER:
+                    //初始化Adapter
+                    adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, titleText);
+                    mBlogListView.setAdapter(adapter);
                     break;
             }
         }
@@ -98,17 +103,13 @@ public class BlogFragment extends Fragment {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                //初始化Adapter
-                adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, titleText);
-                mBlogListView.setAdapter(adapter);
-
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         //关闭刷新
                         swipeRefreshLayout.setRefreshing(false);
                     }
-                },1000);
+                }, 1000);
             }
         });
 
