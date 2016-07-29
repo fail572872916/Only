@@ -1,6 +1,5 @@
 package com.liuguilin.only.fragment;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -15,7 +14,7 @@ import com.liuguilin.only.adapter.UserAdapter;
  * 我的信息
  * Created by LGL on 2016/5/11.
  */
-public class UserFragment extends Fragment {
+public class UserFragment extends android.support.v4.app.Fragment {
 
     private ListView mListView;
 

@@ -1,6 +1,5 @@
 package com.liuguilin.only.fragment;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -33,7 +32,7 @@ import java.util.List;
  * 微信精选
  * Created by LGL on 2016/5/4.
  */
-public class WechatFragment extends Fragment {
+public class WechatFragment extends android.support.v4.app.Fragment {
 
     //刷新时间
     public static final int REFRESH_DELAY = 4000;

@@ -3,13 +3,12 @@ package com.liuguilin.only;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.annotation.SuppressLint;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -34,7 +33,7 @@ import com.liuguilin.only.fragment.BlogFragment;
 import com.liuguilin.only.fragment.GirlFragment;
 import com.liuguilin.only.fragment.GithubFragment;
 import com.liuguilin.only.fragment.MoreFragment;
-import com.liuguilin.only.fragment.MusicFragment;
+import com.liuguilin.only.fragment.NewsFragment;
 import com.liuguilin.only.fragment.UserFragment;
 import com.liuguilin.only.fragment.WechatFragment;
 import com.liuguilin.only.utils.NetWorkUtils;
@@ -91,7 +90,7 @@ public class MainActivity extends AppCompatActivity
     private void initView() {
 
         //跳转头条新闻
-        initPagerContent(new MusicFragment());
+        initPagerContent(new NewsFragment());
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -215,7 +214,7 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_toutiao) {
             //跳转头条新闻
-            initPagerContent(new MusicFragment());
+            initPagerContent(new NewsFragment());
         } else if (id == R.id.nav_wechat) {
             //跳转微信精选
             initPagerContent(new WechatFragment());
@@ -283,16 +282,16 @@ public class MainActivity extends AppCompatActivity
                 initPagerContent(new GithubFragment());
                 break;
             case R.id.iv_icon1:
-                Toast.makeText(this, "icon1", 0).show();
+                Toast.makeText(this, "icon1", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.iv_icon2:
-                Toast.makeText(this, "icon2", 0).show();
+                Toast.makeText(this, "icon2", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.iv_icon3:
-                Toast.makeText(this, "icon3", 0).show();
+                Toast.makeText(this, "icon3", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.iv_icon4:
-                Toast.makeText(this, "icon4", 0).show();
+                Toast.makeText(this, "icon4", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.iv_icon5:
                 startActivity(new Intent(this, SearchActivity.class));
@@ -420,10 +419,10 @@ public class MainActivity extends AppCompatActivity
      *
      * @param fragment
      */
-    private void initPagerContent(android.app.Fragment fragment) {
-        FragmentManager manager = getFragmentManager();
+    private void initPagerContent(Fragment fragment) {
+        android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
         //会话
-        FragmentTransaction ft = manager.beginTransaction();
+        android.support.v4.app.FragmentTransaction ft = manager.beginTransaction();
         ft.replace(R.id.myContent, fragment);
         ft.commit();
     }

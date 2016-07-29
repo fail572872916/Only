@@ -1,6 +1,5 @@
 package com.liuguilin.only.fragment;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,7 +28,7 @@ import java.util.List;
  * 我的博客
  * Created by LGL on 2016/5/4.
  */
-public class BlogFragment extends Fragment {
+public class BlogFragment extends android.support.v4.app.Fragment {
 
     private ListView mBlogListView;
     //adapter
