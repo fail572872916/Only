@@ -36,6 +36,7 @@ import com.liuguilin.only.fragment.MoreFragment;
 import com.liuguilin.only.fragment.NewsFragment;
 import com.liuguilin.only.fragment.UserFragment;
 import com.liuguilin.only.fragment.WechatFragment;
+import com.liuguilin.only.utils.FunctionUtils;
 import com.liuguilin.only.utils.NetWorkUtils;
 import com.liuguilin.only.view.CustomDialog;
 
@@ -467,7 +468,7 @@ public class MainActivity extends AppCompatActivity
                     .setMessage(getString(R.string.is_go_netwotk_setting)).setPositiveButton(getString(R.string.intent_setting), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    NetWorkUtils.openSystemSetting(getApplicationContext());
+                    FunctionUtils.toSettingNetWork(MainActivity.this);
                 }
             }).setNegativeButton(getString(R.string.finish), new DialogInterface.OnClickListener() {
                 @Override

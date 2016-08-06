@@ -36,7 +36,6 @@ import java.util.List;
  * Created by LGL on 2016/3/26.
  */
 public class LocationActivity extends AppCompatActivity implements View.OnClickListener {
-    public static final int REQUEST_CODE_PICK_CITY = 2333;
     public static final String KEY_PICKED_CITY = "picked_city";
 
     private ListView mListView;
