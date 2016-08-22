@@ -38,6 +38,7 @@
         <!--首页-->
         <activity
             android:name=".IndexActivity"
+            android:icon="@drawable/only"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

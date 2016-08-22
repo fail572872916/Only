@@ -71,7 +71,9 @@ public class MainActivity extends AppCompatActivity
     private TextView mRadar;    //雷达
     private TextView mScan;     //扫一扫
     private TextView mWebsite;  //访问官网
-    private TextView mDream;    //关于梦
+    private TextView mLocation;//我的位置
+  private TextView mDream;    //关于梦
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -181,11 +183,13 @@ public class MainActivity extends AppCompatActivity
             mRadar = (TextView) view.findViewById(R.id.tv_leida);
             mScan = (TextView) view.findViewById(R.id.tv_saomiao);
             mWebsite = (TextView) view.findViewById(R.id.tv_guanwang);
+            mLocation= (TextView) view.findViewById(R.id.tv_location);
             mDream = (TextView) view.findViewById(R.id.tv_about);
 
             mRadar.setOnClickListener(this);
             mScan.setOnClickListener(this);
             mWebsite.setOnClickListener(this);
+            mLocation.setOnClickListener(this);
             mDream.setOnClickListener(this);
             //实例化
             pop = new PopupWindow(view, 300, LinearLayoutCompat.LayoutParams.WRAP_CONTENT, true);
@@ -342,6 +346,10 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.tv_guanwang:  //访问官网
                 Toast.makeText(getApplicationContext(), "访问官网", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.tv_location:  //访问官网
+              Intent location=new Intent(MainActivity.this,LocationActivity.class);
+                startActivity(location);
                 break;
             case R.id.tv_about: //关于梦
                 Toast.makeText(getApplicationContext(), "关于梦", Toast.LENGTH_SHORT).show();
