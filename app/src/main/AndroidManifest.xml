@@ -74,6 +74,9 @@
 
         <activity android:name=".SearchActivity"
             android:label="@string/tv_search"/>
+        <!--国内新闻-->
+        <activity android:name=".WeiliTest"
+          />
 
     </application>
 

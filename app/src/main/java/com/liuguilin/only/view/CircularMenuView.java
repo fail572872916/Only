@@ -66,7 +66,7 @@ public class CircularMenuView extends View {
         outerString = new String[]{mContext.getString(R.string.item_1),mContext.getString(R.string.item_2),mContext.getString(R.string.item_3),
                 mContext.getString(R.string.item_4),mContext.getString(R.string.item_5),mContext.getString(R.string.item_6),mContext.getString(R.string.item_7),
                 mContext.getString(R.string.item_8),mContext.getString(R.string.item_9),mContext.getString(R.string.item_10),mContext.getString(R.string.item_11),
-                mContext.getString(R.string.item_12)};
+                mContext.getString(R.string.item_12),mContext.getString(R.string.item_19)};
         innerString = new String[] {mContext.getString(R.string.item_13),mContext.getString(R.string.item_14),mContext.getString(R.string.item_15),
                 mContext.getString(R.string.item_16),mContext.getString(R.string.item_17),mContext.getString(R.string.item_18)};
 
@@ -140,7 +140,7 @@ public class CircularMenuView extends View {
         }
 
         PointCirCleOut cirCleOut;
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < 13; i++) {
 
             cirCleOut = outerPointCirCle[i];
             canvas.drawCircle(cirCleOut.cirCle_X, cirCleOut.cirCle_Y, 35,
@@ -185,11 +185,11 @@ public class CircularMenuView extends View {
      */
     public void createOuterPoint() {
 
-        outerPointCirCle = new PointCirCleOut[12];
+        outerPointCirCle = new PointCirCleOut[13];
 
         int startAngle = 0;
 
-        int degress = 360 / 12;
+        int degress = 360 / 13;
 
         for (int i = 0; i < outerPointCirCle.length; i++) {
 
@@ -206,7 +206,7 @@ public class CircularMenuView extends View {
             cirCleOut.cirCle_name = outerString[i];
             outerPointCirCle[i] = cirCleOut;
         }
-        calculatePointPosition2(12);
+        calculatePointPosition2(13);
     }
 
     /**
@@ -236,7 +236,7 @@ public class CircularMenuView extends View {
 
         int radius = radiusOuter;
 
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < 13; i++) {
 
             pointCirCle = outerPointCirCle[i];
 
@@ -315,12 +315,12 @@ public class CircularMenuView extends View {
 
                 L.e("X=" + event.getX(), "Y=" + event.getY());
                 // 计算手指滑动的角度,并且重新计算各个球的坐标
-                resetPositionAngle2(event.getX(), event.getY(), 12);
+                resetPositionAngle2(event.getX(), event.getY(), 13);
                 resetPositionAngle1(event.getX(), event.getY(), 6);
 
                 // 重新放置各个球的位置
                 calculatePointPosition1(6);
-                calculatePointPosition2(12);
+                calculatePointPosition2(13);
 
                 // 执行
 
@@ -333,14 +333,14 @@ public class CircularMenuView extends View {
                 // 判断点击的位置是否在所绘制的图案上，进行事件处理
 
                 checkClickCircle1(event.getX(), event.getY(), 6);
-                checkClickCircle2(event.getX(), event.getY(), 12);
+                checkClickCircle2(event.getX(), event.getY(), 13);
 
                 tempDegress = 0;
 
                 tempDegress1 = 0;
                 // 重新放置各个球的位置
                 calculatePointPosition1(6);
-                calculatePointPosition2(12);
+                calculatePointPosition2(13);
 
                 // 执行
 

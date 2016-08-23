@@ -1,5 +1,6 @@
 package com.liuguilin.only.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.liuguilin.only.R;
+import com.liuguilin.only.WeiliTest;
 import com.liuguilin.only.view.CircularMenuView;
 
 /**
@@ -46,5 +48,14 @@ public class MoreFragment extends android.support.v4.app.Fragment implements Cir
     @Override
     public void onCircleOuterLinstener(CircularMenuView.PointCirCleOut pointCirCle) {
         Toast.makeText(getActivity(), "当前点击是:" + pointCirCle.cirCle_name, Toast.LENGTH_SHORT).show();
+        String name=pointCirCle.cirCle_name;
+        String Rname;
+        Rname=this.getString(R.string.item_19);
+
+        if(name.equals(Rname)){
+            Intent  i=new Intent(getActivity(), WeiliTest.class);
+            startActivity(i);
+        }
+
     }
 }

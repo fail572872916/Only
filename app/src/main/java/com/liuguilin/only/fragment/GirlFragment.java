@@ -1,7 +1,9 @@
 package com.liuguilin.only.fragment;
 
+import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.Gravity;
@@ -9,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -39,6 +42,7 @@ import java.util.List;
  */
 public class GirlFragment extends android.support.v4.app.Fragment {
 
+    private String  fileName;
     //列表
     private GridView mGridView;
 
@@ -58,8 +62,15 @@ public class GirlFragment extends android.support.v4.app.Fragment {
     //下拉刷新
     private SwipeRefreshLayout swipeRefreshLayout;
 
+    private final static String TAG = "IcsTestActivity";
+    private final static String ALBUM_PATH
+            = Environment.getExternalStorageDirectory() + "/download_test/";
+    private Bitmap mBitmap;
+    private String mFileName;
+    private String mSaveMessage;
+    private ProgressDialog mSaveDialog = null;
     private ImageView iv_girl_pow;
-
+    private Button  im_girl_save;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_girl, null);
@@ -80,9 +91,18 @@ public class GirlFragment extends android.support.v4.app.Fragment {
 
         imgDialog = new CustomDialog(getActivity(), LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, R.layout.dialog_girl, R.style.Theme_dialog, Gravity.CENTER, R.style.pop_anim_style);
         iv_girl_pow = (ImageView) imgDialog.findViewById(R.id.iv_girl_pow);
-
+        im_girl_save= (Button) imgDialog.findViewById(R.id.im_girl_save);
         getGirl();
 
+        im_girl_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                mSaveDialog = ProgressDialog.show(getActivity(), "保存图片", "图片正在保存中，请稍等...", true);
+
+
+            }
+        });
         //设置下拉刷新的颜色
         swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_light, android.R.color.holo_red_light, android.R.color.holo_orange_light, android.R.color.holo_green_light);
         //下拉监听
@@ -158,6 +178,7 @@ public class GirlFragment extends android.support.v4.app.Fragment {
                 GirlBean bean = new GirlBean();
                 bean.setTime(jsonObject1.getString("publishedAt"));
                 bean.setUrl(jsonObject1.getString("url"));
+
                 mList.add(bean);
 
                 urlList.add(jsonObject1.getString("url"));
@@ -171,8 +192,9 @@ public class GirlFragment extends android.support.v4.app.Fragment {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     L.i(urlList.get(position));
-//                    Glide.with(getActivity()).load(urlList.get(position)).into(iv_girl_pow);
-                    Volley_Iv(urlList.get(position));
+             //     Glide.with(getActivity()).load(urlList.get(position)).into(iv_girl_pow);
+                fileName=mList.get(position).getTime();
+                 Volley_Iv(urlList.get(position));
                 }
             });
 
@@ -205,4 +227,6 @@ public class GirlFragment extends android.support.v4.app.Fragment {
         //最后将这个ImageRequest对象添加到RequestQueue里就可以
         queue.add(imageRequest);
     }
+
+
 }

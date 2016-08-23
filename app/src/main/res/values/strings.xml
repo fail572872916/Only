@@ -52,6 +52,7 @@
     <string name="item_10">IP查询</string>
     <string name="item_11">邮编查询</string>
     <string name="item_12">快递查询</string>
+    <string name="item_19">国内新闻</string>
 
     <!--内圈6-->
     <string name="item_13">测试吉凶</string>
