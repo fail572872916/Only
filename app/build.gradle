@@ -43,4 +43,7 @@ dependencies {
     //jsoup
     compile 'org.jsoup:jsoup:1.9.2'
 
+    compile 'org.jetbrains:annotations-java5:15.0'
+    compile project(path: ':libs')
+    compile project(path: ':standardadapter')
 }

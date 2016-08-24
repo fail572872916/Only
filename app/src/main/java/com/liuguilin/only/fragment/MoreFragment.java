@@ -2,14 +2,13 @@ package com.liuguilin.only.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.liuguilin.only.NormalRefreshActivity;
 import com.liuguilin.only.R;
-import com.liuguilin.only.WeiliTest;
 import com.liuguilin.only.view.CircularMenuView;
 
 /**
@@ -21,7 +20,7 @@ public class MoreFragment extends android.support.v4.app.Fragment implements Cir
     //圆形菜单
     private CircularMenuView mCircleMenu;
 
-    @Nullable
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_more, null);
@@ -53,7 +52,7 @@ public class MoreFragment extends android.support.v4.app.Fragment implements Cir
         Rname=this.getString(R.string.item_19);
 
         if(name.equals(Rname)){
-            Intent  i=new Intent(getActivity(), WeiliTest.class);
+            Intent  i=new Intent(getActivity(), NormalRefreshActivity.class);
             startActivity(i);
         }
 

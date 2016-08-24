@@ -77,6 +77,8 @@
         <!--国内新闻-->
         <activity android:name=".WeiliTest"
           />
+        <activity android:name=".NormalRefreshActivity"
+          />
 
     </application>
 
